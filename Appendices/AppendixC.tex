@@ -1,0 +1,98 @@
+% Appendix C
+
+\chapter{Additional Documentation} % Main appendix title
+
+\label{AppendixC} % For referencing this appendix elsewhere, use \ref{AppendixC}
+
+% Header formatting is now handled in main.tex
+
+This appendix contains additional technical documentation, API references, and deployment guides that support the SSL Automation Tool implementation.
+
+\section{API Documentation}
+
+\subsection{REST API Endpoints}
+
+The SSL Automation Tool provides a comprehensive REST API for certificate management operations.
+
+\subsubsection{Certificate Generation}
+
+\textbf{Endpoint}: \texttt{POST /api/v1/generate-cert}
+
+\textbf{Description}: Initiates SSL certificate generation using Let's Encrypt with DNS validation.
+
+\textbf{Request Body}:
+\begin{verbatim}
+{
+  "domain": "example.com",
+  "email": "admin@example.com",
+  "dns_provider": "godaddy",
+  "api_key": "your_godaddy_api_key",
+  "api_secret": "your_godaddy_api_secret",
+  "base_domain": "example.com",
+  "ttl": 600,
+  "propagation_delay": 60
+}
+\end{verbatim}
+
+\textbf{Response}:
+\begin{verbatim}
+{
+  "success": true,
+  "message": "Certificate generated successfully",
+  "domain": "example.com",
+  "output": "Certbot execution output..."
+}
+\end{verbatim}
+
+\section{Environment Configuration}
+
+\subsection{Required Environment Variables}
+
+The following environment variables must be configured for proper system operation:
+
+\subsubsection{Frontend Configuration}
+
+\begin{verbatim}
+# .env.local - Frontend environment variables
+NEXT_PUBLIC_API_URL=http://localhost:80
+NEXT_PUBLIC_ENV=development
+\end{verbatim}
+
+\subsubsection{Backend Configuration}
+
+Environment variables are passed at runtime through Docker or system configuration:
+
+\begin{verbatim}
+# Runtime environment variables
+GODADDY_API_KEY=your_api_key_here
+GODADDY_API_SECRET=your_api_secret_here
+BASE_DOMAIN=yourdomain.com
+DNS_TTL=600
+PROPAGATION_DELAY=60
+PYTHONPATH=/app
+\end{verbatim}
+
+\section{Security Considerations}
+
+\subsection{Security Best Practices}
+
+\subsubsection{Credential Management}
+
+\begin{itemize}
+    \item Never store DNS provider credentials in configuration files
+    \item Use environment variables or secrets management systems
+    \item Rotate API keys regularly (quarterly recommended)
+    \item Monitor API key usage for unauthorized access
+    \item Implement IP whitelisting where possible
+\end{itemize}
+
+\subsubsection{Certificate Security}
+
+\begin{itemize}
+    \item Set proper file permissions (600) for private keys
+    \item Use encrypted storage for certificate backups
+    \item Implement certificate pinning for critical applications
+    \item Monitor certificate expiration proactively
+    \item Have emergency certificate renewal procedures
+\end{itemize}
+

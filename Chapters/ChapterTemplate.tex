@@ -1,0 +1,49 @@
+% Chapter Template
+
+\chapter{Chapter Title}\doublespacing % Main chapter title
+
+\label{ChapterX} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\fancyhead[OC]{Chapter X. \emph{Header Title}} % 
+
+\section{Introduction}
+\label{X_intro}
+\lipsum[90]
+
+\section{Content}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Chapters/Chapter_X/figX.y.png}
+\caption{Figure X.y Title.}
+\label{fig:figX_y}
+\end{figure}
+
+\clearpage
+\begin{table*}[ht!]
+    \caption{Table Title}
+    \begin{center}
+    {
+        \centering
+        \def\arraystretch{1.4}
+        \begin{tabular}{|>{\arraybackslash}m{2.8cm}|>{\centering\arraybackslash}m{1.8cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.4cm}|}
+            \hline
+            \textbf{Parameters} & \textbf{This work} & \textbf{Ref. 1} & \textbf{Ref. 2} & \textbf{Ref. 3} & \textbf{Ref. 4} & \textbf{Ref. 5} & \textbf{Ref. 6} \\
+            \hline
+            \hline
+            \textbf{Technology [nm]} & 45 (\textbf{SOI}) & 65 & 180 & 180 & 130 & 130 & 55 \\ \hline
+
+            \multicolumn{8}{l}{$^{\mathrm{a}}$ Walden Figure of Merit: $FoM_{W} = Power/ (2^{ENOB} * min(f_s, 2*ERBW))$}\\
+            \multicolumn{8}{l}{$^{\mathrm{b}}$ Schreier Figure of Merit: $FoM_{SNDR} = SNDR + 10*log(BW/Power)$}
+        \end{tabular}\par
+    }
+        \label{table:comparison}
+    \end{center}
+\end{table*}
+
+\section{Summary}
+
+\lipsum[91]
+
+
+

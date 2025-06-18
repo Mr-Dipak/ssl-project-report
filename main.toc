@@ -1,0 +1,169 @@
+
+\contentsline {chapter}{Acknowledgements}{74}{dummy.274}%
+\contentsline {chapter}{Abstract}{i}{dummy.2}%
+
+\contentsline {chapter}{Contents}{vi}{dummy.3}%
+\contentsline {chapter}{List of Figures}{x}{dummy.5}%
+\contentsline {chapter}{List of Tables}{xii}{dummy.7}%
+\contentsline {chapter}{Abbreviations}{xiii}{dummy.9}%
+\contentsline {chapter}{Symbols}{xv}{dummy.12}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.15}%
+\contentsline {section}{\numberline {1.1}Company Profile}{1}{section.16}%
+\contentsline {section}{\numberline {1.2}Existing System and Need for System}{2}{section.17}%
+\contentsline {subsection}{\numberline {1.2.1}Current SSL Certificate Management Challenges}{2}{subsection.18}%
+\contentsline {subsection}{\numberline {1.2.2}Industry Requirements}{2}{subsection.19}%
+\contentsline {section}{\numberline {1.3}Scope of Work}{3}{section.20}%
+\contentsline {subsection}{\numberline {1.3.1}Frontend Application Scope}{3}{subsection.21}%
+\contentsline {subsection}{\numberline {1.3.2}Backend API Scope}{3}{subsection.22}%
+\contentsline {subsection}{\numberline {1.3.3}Integration Scope}{4}{subsection.23}%
+\contentsline {section}{\numberline {1.4}Operating Environment – Hardware and Software}{4}{section.24}%
+\contentsline {subsection}{\numberline {1.4.1}Development Environment}{4}{subsection.25}%
+\contentsline {subsection}{\numberline {1.4.2}Frontend Requirements}{4}{subsection.26}%
+\contentsline {subsection}{\numberline {1.4.3}Backend Requirements}{5}{subsection.27}%
+\contentsline {subsection}{\numberline {1.4.4}Production Environment}{5}{subsection.28}%
+\contentsline {section}{\numberline {1.5}Detail Description of Technology Used}{5}{section.29}%
+\contentsline {subsection}{\numberline {1.5.1}Frontend Technologies}{5}{subsection.30}%
+\contentsline {subsubsection}{\numberline {1.5.1.1}Next.js 15 Framework}{5}{subsubsection.31}%
+\contentsline {subsubsection}{\numberline {1.5.1.2}React 19}{6}{subsubsection.32}%
+\contentsline {subsubsection}{\numberline {1.5.1.3}ShadCN UI Component Library}{6}{subsubsection.33}%
+\contentsline {subsubsection}{\numberline {1.5.1.4}TypeScript}{6}{subsubsection.34}%
+\contentsline {subsection}{\numberline {1.5.2}Backend Technologies}{7}{subsection.35}%
+\contentsline {subsubsection}{\numberline {1.5.2.1}FastAPI Framework}{7}{subsubsection.36}%
+\contentsline {subsubsection}{\numberline {1.5.2.2}Python 3.13}{7}{subsubsection.37}%
+\contentsline {subsubsection}{\numberline {1.5.2.3}Certbot Integration}{8}{subsubsection.38}%
+\contentsline {subsection}{\numberline {1.5.3}Supporting Technologies}{8}{subsection.39}%
+\contentsline {subsubsection}{\numberline {1.5.3.1}Docker Containerization}{8}{subsubsection.40}%
+\contentsline {subsubsection}{\numberline {1.5.3.2}UV Package Manager}{8}{subsubsection.41}%
+\contentsline {subsubsection}{\numberline {1.5.3.3}DNS Provider APIs}{9}{subsubsection.42}%
+\contentsline {chapter}{\numberline {2}Proposed System}{10}{chapter.43}%
+\contentsline {section}{\numberline {2.1}Proposed System}{10}{section.44}%
+\contentsline {subsection}{\numberline {2.1.1}System Architecture Overview}{10}{subsection.45}%
+\contentsline {subsubsection}{\numberline {2.1.1.1}Frontend Layer}{11}{subsubsection.46}%
+\contentsline {subsubsection}{\numberline {2.1.1.2}Backend Layer}{11}{subsubsection.47}%
+\contentsline {subsubsection}{\numberline {2.1.1.3}Infrastructure Layer}{11}{subsubsection.48}%
+\contentsline {subsubsection}{\numberline {2.1.1.4}Frontend Layer}{11}{subsubsection.49}%
+\contentsline {subsubsection}{\numberline {2.1.1.5}Backend Layer}{12}{subsubsection.50}%
+\contentsline {subsubsection}{\numberline {2.1.1.6}Infrastructure Layer}{12}{subsubsection.51}%
+\contentsline {section}{\numberline {2.2}Objectives of System}{12}{section.52}%
+\contentsline {subsection}{\numberline {2.2.1}Primary Objectives}{12}{subsection.53}%
+\contentsline {subsection}{\numberline {2.2.2}Secondary Objectives}{13}{subsection.58}%
+\contentsline {section}{\numberline {2.3}User Requirements}{14}{section.62}%
+\contentsline {subsection}{\numberline {2.3.1}Functional Requirements}{14}{subsection.63}%
+\contentsline {subsubsection}{\numberline {2.3.1.1}Certificate Generation Requirements}{14}{subsubsection.64}%
+\contentsline {subsubsection}{\numberline {2.3.1.2}Certificate Management Requirements}{14}{subsubsection.70}%
+\contentsline {subsubsection}{\numberline {2.3.1.3}DNS Provider Integration Requirements}{15}{subsubsection.76}%
+\contentsline {subsubsection}{\numberline {2.3.1.4}User Interface Requirements}{15}{subsubsection.82}%
+\contentsline {subsection}{\numberline {2.3.2}Non-Functional Requirements}{15}{subsection.88}%
+\contentsline {subsubsection}{\numberline {2.3.2.1}Performance Requirements}{15}{subsubsection.89}%
+\contentsline {subsubsection}{\numberline {2.3.2.2}Security Requirements}{16}{subsubsection.94}%
+\contentsline {subsubsection}{\numberline {2.3.2.3}Reliability Requirements}{16}{subsubsection.99}%
+\contentsline {subsubsection}{\numberline {2.3.2.4}Usability Requirements}{16}{subsubsection.104}%
+\contentsline {subsubsection}{\numberline {2.3.2.5}Scalability Requirements}{16}{subsubsection.109}%
+\contentsline {chapter}{\numberline {3}Analysis and Design}{18}{chapter.114}%
+\contentsline {section}{\numberline {3.1}System Analysis}{18}{section.115}%
+\contentsline {subsection}{\numberline {3.1.1}System Context}{18}{subsection.117}%
+\contentsline {section}{\numberline {3.2}Activity Diagram}{19}{section.118}%
+\contentsline {section}{\numberline {3.3}Use Case Diagrams}{20}{section.127}%
+\contentsline {subsection}{\numberline {3.3.1}Primary Use Cases}{20}{subsection.129}%
+\contentsline {subsection}{\numberline {3.3.2}Secondary Use Cases}{20}{subsection.135}%
+\contentsline {section}{\numberline {3.4}Component Diagram}{21}{section.140}%
+\contentsline {subsection}{\numberline {3.4.1}Frontend Components}{21}{subsection.142}%
+\contentsline {subsection}{\numberline {3.4.2}Backend Components}{22}{subsection.143}%
+\contentsline {section}{\numberline {3.5}Deployment Diagram}{23}{section.144}%
+\contentsline {subsection}{\numberline {3.5.1}Deployment Architecture}{23}{subsection.146}%
+\contentsline {section}{\numberline {3.6}Data Flow Diagram}{24}{section.147}%
+\contentsline {subsection}{\numberline {3.6.1}Data Flow Process}{24}{subsection.149}%
+\contentsline {section}{\numberline {3.7}Functional Decomposition}{25}{section.157}%
+\contentsline {subsection}{\numberline {3.7.1}Function Hierarchy}{26}{subsection.159}%
+\contentsline {section}{\numberline {3.8}Test Procedures and Implementation}{26}{section.160}%
+\contentsline {subsection}{\numberline {3.8.1}Testing Levels}{27}{subsection.162}%
+\contentsline {subsection}{\numberline {3.8.2}Test Implementation Strategy}{28}{subsection.167}%
+\contentsline {chapter}{\numberline {4}User Manual}{29}{chapter.168}%
+\contentsline {section}{\numberline {4.1}User Manual}{29}{section.169}%
+\contentsline {subsection}{\numberline {4.1.1}System Requirements}{29}{subsection.170}%
+\contentsline {subsubsection}{\numberline {4.1.1.1}For End Users}{29}{subsubsection.171}%
+\contentsline {subsubsection}{\numberline {4.1.1.2}For System Administrators}{30}{subsubsection.172}%
+\contentsline {subsection}{\numberline {4.1.2}Installation Guide}{30}{subsection.173}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}Quick Start with Docker}{30}{subsubsection.174}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}Development Setup}{30}{subsubsection.175}%
+\contentsline {section}{\numberline {4.2}Operations Manual / Menu Explanation}{31}{section.176}%
+\contentsline {subsection}{\numberline {4.2.1}Main Dashboard}{31}{subsection.177}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}Statistics Cards}{31}{subsubsection.178}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}Certificate List}{32}{subsubsection.179}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}Action Buttons}{32}{subsubsection.180}%
+\contentsline {subsection}{\numberline {4.2.2}Certificate Generation Process}{32}{subsection.181}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Step 1: Access Generation Dialog}{32}{subsubsection.182}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Step 2: Enter Domain Information}{32}{subsubsection.183}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Step 3: Configure DNS Provider}{33}{subsubsection.184}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}Step 4: Advanced Settings (Optional)}{33}{subsubsection.185}%
+\contentsline {subsubsection}{\numberline {4.2.2.5}Step 5: Generate Certificate}{33}{subsubsection.186}%
+\contentsline {subsection}{\numberline {4.2.3}Certificate Download and Deployment}{34}{subsection.187}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Individual File Downloads}{34}{subsubsection.188}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}ZIP Bundle Download}{34}{subsubsection.189}%
+\contentsline {subsubsection}{\numberline {4.2.3.3}Server Configuration}{34}{subsubsection.190}%
+\contentsline {section}{\numberline {4.3}Program Specifications / Flow Charts}{34}{section.191}%
+\contentsline {subsection}{\numberline {4.3.1}Certificate Generation Workflow}{34}{subsection.192}%
+\contentsline {subsection}{\numberline {4.3.2}Error Handling Workflow}{35}{subsection.194}%
+\contentsline {subsection}{\numberline {4.3.3}System Architecture Flow}{36}{subsection.199}%
+\contentsline {section}{\numberline {4.4}Drawbacks and Limitations}{36}{section.201}%
+\contentsline {subsection}{\numberline {4.4.1}Current System Limitations}{36}{subsection.202}%
+\contentsline {subsection}{\numberline {4.4.2}Technical Limitations}{37}{subsection.207}%
+\contentsline {section}{\numberline {4.5}Proposed Enhancements}{37}{section.210}%
+\contentsline {subsection}{\numberline {4.5.1}Short-term Improvements}{37}{subsection.211}%
+\contentsline {subsection}{\numberline {4.5.2}Long-term Enhancements}{38}{subsection.215}%
+\contentsline {section}{\numberline {4.6}Conclusions}{39}{section.219}%
+\vspace {2em}
+\contentsline {chapter}{\numberline {A}User Interface Screens}{40}{appendix.220}%
+\contentsline {section}{\numberline {A.1}Main Dashboard}{40}{section.221}%
+\contentsline {subsection}{\numberline {A.1.1}Dashboard Overview}{40}{subsection.222}%
+\contentsline {subsection}{\numberline {A.1.2}Statistics Section}{41}{subsection.223}%
+\contentsline {section}{\numberline {A.2}Certificate Generation Dialog}{41}{section.224}%
+\contentsline {subsection}{\numberline {A.2.1}Basic Information Fields}{41}{subsection.225}%
+\contentsline {subsection}{\numberline {A.2.2}DNS Configuration Section}{41}{subsection.226}%
+\contentsline {subsection}{\numberline {A.2.3}Advanced Settings (Expandable)}{42}{subsection.227}%
+\contentsline {subsection}{\numberline {A.2.4}Progress Indicators}{42}{subsection.228}%
+\contentsline {section}{\numberline {A.3}Certificate List View}{42}{section.229}%
+\contentsline {subsection}{\numberline {A.3.1}Column Information}{42}{subsection.230}%
+\contentsline {subsection}{\numberline {A.3.2}Action Buttons}{43}{subsection.231}%
+\contentsline {section}{\numberline {A.4}Documentation Interface}{43}{section.232}%
+\contentsline {subsection}{\numberline {A.4.1}Tab Navigation}{44}{subsection.233}%
+\contentsline {subsection}{\numberline {A.4.2}Code Examples}{44}{subsection.234}%
+\contentsline {section}{\numberline {A.5}Dark Mode Interface}{44}{section.235}%
+\contentsline {subsection}{\numberline {A.5.1}Theme Features}{45}{subsection.236}%
+\contentsline {section}{\numberline {A.6}Mobile Responsive Design}{45}{section.237}%
+\contentsline {subsection}{\numberline {A.6.1}Mobile Adaptations}{45}{subsection.238}%
+\contentsline {subsection}{\numberline {A.6.2}Tablet Interface}{45}{subsection.239}%
+\contentsline {section}{\numberline {A.7}Error and Success Notifications}{46}{section.240}%
+\contentsline {subsection}{\numberline {A.7.1}Notification Types}{46}{subsection.241}%
+\contentsline {subsection}{\numberline {A.7.2}Error Handling Interface}{46}{subsection.242}%
+\contentsline {chapter}{\numberline {B}Sample Program Code}{47}{appendix.243}%
+\contentsline {section}{\numberline {B.1}Frontend Code Samples}{47}{section.244}%
+\contentsline {subsection}{\numberline {B.1.1}SSL Dashboard Component}{47}{subsection.245}%
+\contentsline {subsection}{\numberline {B.1.2}Certificate Generation Form}{51}{subsection.246}%
+\contentsline {section}{\numberline {B.2}Backend Code Samples}{55}{section.247}%
+\contentsline {subsection}{\numberline {B.2.1}FastAPI Main Application}{55}{subsection.248}%
+\contentsline {subsection}{\numberline {B.2.2}Certificate Service Implementation}{56}{subsection.249}%
+\contentsline {subsection}{\numberline {B.2.3}Certbot Runner Service}{59}{subsection.250}%
+\contentsline {section}{\numberline {B.3}DNS Integration Code}{61}{section.251}%
+\contentsline {subsection}{\numberline {B.3.1}GoDaddy DNS Hook Script}{61}{subsection.252}%
+\contentsline {section}{\numberline {B.4}API Models and Types}{64}{section.253}%
+\contentsline {subsection}{\numberline {B.4.1}Pydantic Models}{64}{subsection.254}%
+\contentsline {section}{\numberline {B.5}Configuration Files}{66}{section.255}%
+\contentsline {subsection}{\numberline {B.5.1}Docker Configuration}{66}{subsection.256}%
+\contentsline {subsection}{\numberline {B.5.2}Python Project Configuration}{67}{subsection.257}%
+\contentsline {chapter}{\numberline {C}Additional Documentation}{69}{appendix.258}%
+\contentsline {section}{\numberline {C.1}API Documentation}{69}{section.259}%
+\contentsline {subsection}{\numberline {C.1.1}REST API Endpoints}{69}{subsection.260}%
+\contentsline {subsubsection}{\numberline {C.1.1.1}Certificate Generation}{69}{subsubsection.261}%
+\contentsline {section}{\numberline {C.2}Environment Configuration}{70}{section.262}%
+\contentsline {subsection}{\numberline {C.2.1}Required Environment Variables}{70}{subsection.263}%
+\contentsline {subsubsection}{\numberline {C.2.1.1}Frontend Configuration}{70}{subsubsection.264}%
+\contentsline {subsubsection}{\numberline {C.2.1.2}Backend Configuration}{71}{subsubsection.265}%
+\contentsline {section}{\numberline {C.3}Security Considerations}{71}{section.266}%
+\contentsline {subsection}{\numberline {C.3.1}Security Best Practices}{71}{subsection.267}%
+\contentsline {subsubsection}{\numberline {C.3.1.1}Credential Management}{71}{subsubsection.268}%
+\contentsline {subsubsection}{\numberline {C.3.1.2}Certificate Security}{72}{subsubsection.269}%
+\vspace {2em}
+\contentsline {chapter}{Bibliography}{73}{dummy.270}%
+
+\contentsline {chapter}{Acknowledgements}{74}{dummy.274}%

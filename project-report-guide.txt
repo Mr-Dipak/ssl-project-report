@@ -1,0 +1,112 @@
+PROJECT REPORT
+ON
+SSL Automation Tool
+StartMySafari Innovations Private Limited (smsipl)
+
+Submitted by
+Your name
+
+
+
+
+UNDER THE GUIDANCE OF
+Dr. Kavari Lad
+
+
+In partial fulfilment for the award of the degree of 
+MCA (Master of Computer Application)
+
+
+Dr. Babasaheb Ambedkar Marathwada University, Chhatrapati SambhajinagarDepartment of Management Science 
+2023-24
+
+
+
+
+
+Dr. Babasaheb Ambedkar Marathwada University, Aurangabad. 
+ Department of Management Science,
+ 
+
+
+
+
+
+CERTIFICATE
+
+This is to certified that
+YOUR NAME
+
+Has satisfactory carried out the project work entitled
+“NAME OF PROJECT”
+
+As per requirement of Department of Management Science, Dr. Babasaheb Ambedkar Marathwada University, Chhatrapati Sambhajinagar in the fulfillment of Master of Computer Application for the academic Year 2024-2025.
+
+
+Guide Name				 Prof. Abhijeet Shelke
+(Project Guide)						 (Director)
+
+
+ External Examiner
+*** PROJECT DOCUMENTATION SAMPLE FORMAT ******
+
+2 Blank Pages at beginning
+Title Page
+Certificate from Company
+Certificate from Guide
+Acknowledgement
+Index with printed Page Numbers
+CHAPTER 1 : INTRODUCTION
+1.1 Company Profile
+1.2 Existing System and Need for System
+1.3 Scope of Work
+1.4 Operating Environment – Hardware and Software
+1.5 Detail Description of Technology Used
+CHAPTER 2 : PROPOSED SYSTEM
+2.1 Proposed System
+2.2 Objectives of System
+2.3 User Requirements
+CHAPTER 3 : ANALYSIS & DESIGN
+NOTE – All below diagrams are not compulsory. Students can decide which diagrams needs to add in project by consulting with PROJECT GUIDE.
+3.1 Class Diagram
+3.2 Activity Diagram
+3.3 Use Case Diagrams
+3.4 Component Diagram
+3.5 Deployment Diagram 
+3.6 Sequence Diagram
+3.7 Web Site Map Diagram ( in case of Web Site )
+3.8 Data Flow Diagram (DFD)
+3.9 Functional Decomposition Diagram (FDD)
+3.10 Entity Relationship Diagram (ERD)
+3.11 User Interface Design ( Screens etc. )
+3.12 Table specifications ( in case back end is a database )
+3.13 Data Dictionary 
+3.16 Test Procedures and Implementation
+CHAPTER 4 : USER MANUAL
+4.1 User Manual
+4.2 Operations Manual / Menu Explanation
+4.3 Program Specifications / Flow Charts
+Drawbacks and Limitations
+Proposed Enhancements
+Conclusions
+Bibliography
+ANNEXURES :
+ANNEXURE 1 : USER INTERFACE SCREENS
+ANNEXURE 2 : OUTPUT REPORTS WITH DATA ( if any )
+ANNEXURE 3 : SAMPLE PROGRAM CODE ( which will prove sufficient development is done by the student )
+2 Blank Pages at the end
+
+
+General Instruction Regarding Preparation Of Project Report
+
+TYPING
+(a) The typing shall be standard 12 pts in double spaced using black ink only
+(b) Margins must be Left 2 inches Right 1.5 inches
+Top 2 inches Bottom 1.5 inches
+(c) Paper A4 size Bond Paper
+COPIES
+THREE hard-bound copies ( Black Rexine with Golden Embossing as per format displayed herewith ) 
+
+
+
+

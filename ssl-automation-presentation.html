@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL Automation Tool - Project Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'scale-up': 'scaleUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleUp: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+        }
+        .slide-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">    <div class="slide-container"><!-- Slide 1: Title Slide -->
+        <section id="title" class="slide flex items-center justify-center bg-gradient-to-br from-indigo-900 via-blue-800 to-purple-900 relative overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-indigo-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+            </div>
+            
+            <!-- Geometric Patterns -->
+            <div class="absolute inset-0 opacity-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100" height="100" fill="url(#grid)" />
+                </svg>
+            </div>
+            
+            <div class="relative z-10 max-w-6xl mx-auto px-8 text-center animate-fade-in text-white">
+                <!-- Header Section with Logos -->
+                <div class="mb-12">
+                    <div class="flex justify-center items-center mb-6 space-x-12">
+                        <div class="group">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+                                <img src="Images/iitb_logo.png" alt="University Logo" class="w-20 h-20 object-contain">
+                            </div>
+                        </div>
+                        <div class="w-px h-16 bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
+                        <div class="group">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+                                <img src="Images/udms-logo.png" alt="Department Logo" class="w-20 h-20 object-contain">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <h1 class="text-3xl font-bold text-white/90">
+                            Dr. Babasaheb Ambedkar Marathwada University
+                        </h1>
+                        <p class="text-xl text-white/70">
+                            Chhatrapati Sambhajinagar
+                        </p>
+                        <p class="text-lg text-white/60">
+                            Department of Management Science
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Main Title Section -->
+                <div class="mb-12">
+                    <!-- SSL Shield with Animation -->
+                    <div class="mb-8">
+                        <div class="relative inline-block">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-2xl opacity-50 scale-110 animate-pulse"></div>
+                            <div class="relative bg-gradient-to-br from-blue-500 to-purple-600 w-32 h-32 rounded-3xl flex items-center justify-center shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                                <i class="fas fa-shield-alt text-white text-5xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Title with Animated Text -->
+                    <div class="space-y-4">
+                        <h1 class="text-6xl font-bold leading-tight">
+                            <span class="bg-gradient-to-r from-blue-300 via-white to-purple-300 bg-clip-text text-transparent animate-pulse">
+                                SSL Automation Tool
+                            </span>
+                        </h1>
+                        <p class="text-2xl text-white/80 font-light">
+                            For StartMySafari Innovations Private Limited
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Project Details Grid -->
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <!-- Student Info -->
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-user-graduate text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Student</h3>
+                        <p class="text-xl font-bold text-blue-300">Dipak Nivrutti Rathod</p>
+                        <p class="text-sm text-white/60">MCD004036</p>
+                    </div>
+                    
+                    <!-- Guide Info -->
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-chalkboard-teacher text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Project Guide</h3>
+                        <p class="text-xl font-bold text-purple-300">Dr. Kavari Lad</p>
+                        <p class="text-sm text-white/60">Supervisor</p>
+                    </div>
+                    
+                    <!-- Degree Info -->
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Degree</h3>
+                        <p class="text-lg font-bold text-indigo-300">Master of Computer Application</p>
+                        <p class="text-sm text-white/60">June 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="flex justify-center space-x-6">
+                    <a href="#intro" class="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-bold text-lg overflow-hidden shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1">
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span class="relative flex items-center">
+                            Start Presentation
+                            <i class="fas fa-rocket ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- Floating Elements -->
+                <div class="absolute top-1/4 left-10 opacity-20">
+                    <i class="fas fa-code text-4xl text-blue-300 animate-bounce" style="animation-delay: 0.5s;"></i>
+                </div>
+                <div class="absolute top-1/3 right-10 opacity-20">
+                    <i class="fas fa-server text-4xl text-purple-300 animate-bounce" style="animation-delay: 1.5s;"></i>
+                </div>
+                <div class="absolute bottom-1/4 left-1/4 opacity-20">
+                    <i class="fas fa-lock text-3xl text-indigo-300 animate-bounce" style="animation-delay: 2.5s;"></i>
+                </div>
+                <div class="absolute bottom-1/3 right-1/4 opacity-20">
+                    <i class="fas fa-cloud text-3xl text-blue-300 animate-bounce" style="animation-delay: 3.5s;"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Problem Statement -->
+        <section id="intro" class="slide flex items-center justify-center bg-white">
+            <div class="max-w-6xl mx-auto px-8 py-16">
+                <div class="text-center mb-12 animate-slide-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-6">The Problem</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Traditional SSL certificate management is complex, time-consuming, and error-prone
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <div class="card-hover bg-red-50 p-6 rounded-xl border border-red-100">
+                        <div class="text-red-500 text-3xl mb-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-red-700 mb-2">Time-Consuming Process</h3>
+                        <p class="text-gray-600 text-sm">
+                            Manual certificate generation takes ~30 minutes per domain with complex validation steps
+                        </p>
+                    </div>
+                    
+                    <div class="card-hover bg-orange-50 p-6 rounded-xl border border-orange-100">
+                        <div class="text-orange-500 text-3xl mb-4">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-orange-700 mb-2">Error-Prone Operations</h3>
+                        <p class="text-gray-600 text-sm">
+                            DNS validation and certificate deployment often fail due to human errors
+                        </p>
+                    </div>
+                    
+                    <div class="card-hover bg-yellow-50 p-6 rounded-xl border border-yellow-100">
+                        <div class="text-yellow-500 text-3xl mb-4">
+                            <i class="fas fa-calendar-times"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-yellow-700 mb-2">Renewal Challenges</h3>
+                        <p class="text-gray-600 text-sm">
+                            Tracking expiration dates and renewal processes requires constant monitoring
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+                    <h3 class="text-2xl font-bold mb-4">Our Solution</h3>
+                    <p class="text-lg opacity-90">
+                        Automated SSL certificate lifecycle management with Let's Encrypt integration and DNS provider automation
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: System Architecture -->
+        <section id="architecture" class="slide flex items-center justify-center bg-gray-50">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <div class="text-center mb-12 animate-slide-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-6">System Architecture</h2>
+                    <p class="text-xl text-gray-600">Modern microservices architecture with clear separation of concerns</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Frontend Layer -->
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-desktop text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Frontend Layer</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                React-based SPA with Next.js 15
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                ShadCN UI component library
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Real-time status monitoring
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Responsive design
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Backend Layer -->
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-server text-green-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Backend API</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                FastAPI with Python 3.13+
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Let's Encrypt integration
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                DNS provider automation
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Certificate file management
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Infrastructure Layer -->
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-cloud text-purple-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Infrastructure</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Docker containerization
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Persistent volume storage
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                GoDaddy DNS integration
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                ACME protocol compliance
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Architecture Diagram -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-6">Component Architecture</h3>
+                    <div class="flex justify-center">
+                        <img src="diagram-images/3.4-component-diagram.png" alt="Component Architecture Diagram" class="max-w-full h-auto rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Technical Implementation -->
+        <section id="implementation" class="slide flex items-center justify-center bg-white">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <div class="text-center mb-12 animate-slide-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-6">Technical Implementation</h2>
+                    <p class="text-xl text-gray-600">Key features and implementation highlights</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <!-- Key Features -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-cogs text-blue-600 mr-3"></i>
+                            Key Features
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Automated DNS-01 Validation</h4>
+                                    <p class="text-gray-600 text-sm">Automatic TXT record creation and cleanup via GoDaddy API</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Wildcard Certificate Support</h4>
+                                    <p class="text-gray-600 text-sm">Generate *.domain.com certificates for all subdomains</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Multiple Format Export</h4>
+                                    <p class="text-gray-600 text-sm">PEM, PKCS#12, and bundled formats for various servers</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Configuration Documentation</h4>
+                                    <p class="text-gray-600 text-sm">Server-specific setup guides for Apache, Nginx, etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technology Stack -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-layer-group text-green-600 mr-3"></i>
+                            Technology Stack
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold text-gray-900 mb-2">Frontend</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Next.js 15</li>
+                                    <li>• React 19</li>
+                                    <li>• TypeScript</li>
+                                    <li>• Tailwind CSS</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold text-gray-900 mb-2">Backend</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• FastAPI</li>
+                                    <li>• Python 3.13+</li>
+                                    <li>• Certbot 4.1.1+</li>
+                                    <li>• Docker</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold text-gray-900 mb-2">Integration</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Let's Encrypt ACME</li>
+                                    <li>• GoDaddy DNS API</li>
+                                    <li>• OAuth 2.0</li>
+                                    <li>• REST APIs</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold text-gray-900 mb-2">DevOps</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Docker Compose</li>
+                                    <li>• Volume Persistence</li>
+                                    <li>• Environment Config</li>
+                                    <li>• SSL/TLS Security</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Flow -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-8">Certificate Generation Process</h3>
+                    <div class="flex justify-center">
+                        <img src="diagram-images/3.2-activity-diagram.png" alt="Activity Diagram" class="max-w-full h-auto rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: User Interface Showcase -->
+        <section id="interface" class="slide flex items-center justify-center bg-gray-50">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <div class="text-center mb-12 animate-slide-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-6">User Interface</h2>
+                    <p class="text-xl text-gray-600">Modern, intuitive design for seamless certificate management</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <!-- Dashboard Screenshot -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-tachometer-alt text-blue-600 mr-3"></i>
+                            Certificate Dashboard
+                        </h3>
+                        <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                            <img src="ppt/dashboard.png" alt="SSL Automation Dashboard" class="w-full h-auto rounded-lg shadow-sm">
+                        </div>
+                        <p class="text-gray-600 text-sm">
+                            Centralized view of all certificates with real-time status monitoring and easy management controls.
+                        </p>
+                    </div>
+
+                    <!-- Overview Screenshot -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-chart-line text-green-600 mr-3"></i>
+                            System Overview
+                        </h3>
+                        <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                            <img src="ppt/overview-docs.png" alt="System Overview" class="w-full h-auto rounded-lg shadow-sm">
+                        </div>
+                        <p class="text-gray-600 text-sm">
+                            Comprehensive documentation and system status with deployment guides and configuration examples.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <!-- Docker Integration -->
+                    <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-docker text-blue-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 mb-2">Container Ready</h4>
+                        <p class="text-gray-600 text-sm">One-command deployment with Docker Compose</p>
+                    </div>
+
+                    <!-- Server Configuration -->
+                    <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-server text-green-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 mb-2">Server Guides</h4>
+                        <p class="text-gray-600 text-sm">Apache, Nginx, and other server configuration examples</p>
+                    </div>
+
+                    <!-- Download Management -->
+                    <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-download text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 mb-2">Easy Downloads</h4>
+                        <p class="text-gray-600 text-sm">ZIP bundles with all necessary certificate files</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Challenges and Solutions -->
+        <section id="challenges" class="slide flex items-center justify-center bg-white">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <div class="text-center mb-12 animate-slide-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-6">Challenges & Solutions</h2>
+                    <p class="text-xl text-gray-600">Key technical challenges and innovative solutions implemented</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Challenge 1 -->
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-exclamation-circle text-red-500 text-2xl mr-3"></i>
+                                <h3 class="text-xl font-bold text-red-700">Challenge: DNS Propagation Delays</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                DNS TXT record propagation can take 10-15 minutes, causing Let's Encrypt validation failures and user frustration.
+                            </p>
+                        </div>
+                        <div class="bg-green-50 border border-green-200 rounded-2xl p-8">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-lightbulb text-green-500 text-2xl mr-3"></i>
+                                <h3 class="text-xl font-bold text-green-700">Solution: Smart TTL Management</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Implemented configurable TTL settings and propagation checking with automatic retry mechanisms for reliable validation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Challenge 2 -->
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-exclamation-circle text-red-500 text-2xl mr-3"></i>
+                                <h3 class="text-xl font-bold text-red-700">Challenge: Certificate Format Compatibility</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Different web servers require different certificate formats (PEM, PKCS#12, DER) with specific bundling requirements.
+                            </p>
+                        </div>
+                        <div class="bg-green-50 border border-green-200 rounded-2xl p-8">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-lightbulb text-green-500 text-2xl mr-3"></i>
+                                <h3 class="text-xl font-bold text-green-700">Solution: Multi-Format Export</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Automated conversion to multiple formats with server-specific bundling and comprehensive deployment documentation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Challenge 3 -->
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-exclamation-circle text-red-500 text-2xl mr-3"></i>
+                                <h3 class="text-xl font-bold text-red-700">Challenge: Container Security & Persistence</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Ensuring certificates persist across container restarts while maintaining security best practices for private keys.
+                            </p>
+                        </div>
+                        <div class="bg-green-50 border border-green-200 rounded-2xl p-8">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-lightbulb text-green-500 text-2xl mr-3"></i>
+                                <h3 class="text-xl font-bold text-green-700">Solution: Secure Volume Management</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Implemented Docker volumes with proper permissions and encryption for persistent, secure certificate storage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Results and Performance -->
+        <section id="results" class="slide flex items-center justify-center bg-gray-50">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <div class="text-center mb-12 animate-slide-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-6">Results & Performance</h2>
+                    <p class="text-xl text-gray-600">Measurable improvements in SSL certificate management efficiency</p>
+                </div>
+
+                <!-- Performance Metrics -->
+                <div class="grid lg:grid-cols-4 gap-6 mb-12">
+                    <div class="bg-white rounded-2xl p-8 text-center shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clock text-blue-600 text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2">< 2 min</div>
+                        <div class="text-gray-600 text-sm">Certificate Generation Time</div>
+                        <div class="text-xs text-green-600 mt-2">vs 30 min manual process</div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 text-center shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-check-circle text-green-600 text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2">99.5%</div>
+                        <div class="text-gray-600 text-sm">Success Rate</div>
+                        <div class="text-xs text-green-600 mt-2">Automated validation</div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 text-center shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-purple-600 text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2">95%</div>
+                        <div class="text-gray-600 text-sm">Error Reduction</div>
+                        <div class="text-xs text-green-600 mt-2">vs manual process</div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 text-center shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-line text-orange-600 text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2">90%</div>
+                        <div class="text-gray-600 text-sm">Time Savings</div>
+                        <div class="text-xs text-green-600 mt-2">Operational efficiency</div>
+                    </div>
+                </div>
+
+                <!-- Before vs After -->
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                            <i class="fas fa-times-circle mr-3"></i>
+                            Before Automation
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-clock text-red-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">30+ minutes per certificate</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-user text-red-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">Manual DNS record management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-exclamation-triangle text-red-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">High error rate (~20%)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-calendar-times text-red-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">Manual renewal tracking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-file-alt text-red-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">Complex documentation lookup</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-green-50 border border-green-200 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            After Automation
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-lightning-bolt text-green-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">< 2 minutes per certificate</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-robot text-green-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">Automated DNS validation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-check text-green-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">99.5% success rate</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-bell text-green-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">Automated expiration monitoring</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-book-open text-green-500 mr-3 mt-1"></i>
+                                <span class="text-gray-700">Integrated deployment guides</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Screenshots -->
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h4 class="font-bold text-gray-900 mb-4">Docker Deployment Output</h4>
+                        <img src="ppt/running-docker.png" alt="Docker Running" class="w-full h-auto rounded-lg shadow-sm">
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h4 class="font-bold text-gray-900 mb-4">SSL Certificate Download</h4>
+                        <img src="ppt/zip-download.png" alt="Certificate Download" class="w-full h-auto rounded-lg shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: Future Enhancements -->
+        <section id="future" class="slide flex items-center justify-center bg-white">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <div class="text-center mb-12 animate-slide-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-6">Future Enhancements</h2>
+                    <p class="text-xl text-gray-600">Roadmap for expanding SSL automation capabilities</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <!-- Short-term Goals -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-calendar-alt text-blue-600 mr-3"></i>
+                            Short-term (3-6 months)
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Multi-DNS Provider Support</h4>
+                                    <p class="text-gray-600 text-sm">Cloudflare, Route 53, DigitalOcean DNS integration</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Automated Renewal System</h4>
+                                    <p class="text-gray-600 text-sm">Background service for certificate renewal monitoring</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Email Notifications</h4>
+                                    <p class="text-gray-600 text-sm">Expiration alerts and operation status updates</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">User Authentication</h4>
+                                    <p class="text-gray-600 text-sm">JWT-based auth with role-based access control</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Long-term Goals -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-calendar-check text-green-600 mr-3"></i>
+                            Long-term (6-12 months)
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-star text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Enterprise Dashboard</h4>
+                                    <p class="text-gray-600 text-sm">Multi-tenant architecture with organization management</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-star text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">API Rate Limiting</h4>
+                                    <p class="text-gray-600 text-sm">Prevent abuse and ensure fair usage policies</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-star text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Certificate Analytics</h4>
+                                    <p class="text-gray-600 text-sm">Usage statistics and performance monitoring</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-star text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Kubernetes Integration</h4>
+                                    <p class="text-gray-600 text-sm">Automatic certificate injection for containerized apps</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Technology Evolution -->
+                <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-rocket text-purple-600 mr-3"></i>
+                        Technology Evolution
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-brain text-purple-600 text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">AI-Powered Optimization</h4>
+                            <p class="text-gray-600 text-sm">Machine learning for DNS propagation prediction and optimization</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Mobile Application</h4>
+                            <p class="text-gray-600 text-sm">React Native app for on-the-go certificate management</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-plug text-purple-600 text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Third-party Integrations</h4>
+                            <p class="text-gray-600 text-sm">cPanel, Plesk, and hosting provider direct integration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Conclusion -->
+        <section id="conclusion" class="slide flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800">
+            <div class="max-w-6xl mx-auto px-8 py-16 text-white text-center">
+                <div class="animate-fade-in">
+                    <h2 class="text-5xl font-bold mb-8">Conclusion</h2>
+                    
+                    <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                            <i class="fas fa-trophy text-yellow-400 text-3xl mb-4"></i>
+                            <h3 class="text-xl font-bold mb-4">Project Success</h3>
+                            <p class="text-sm opacity-90">
+                                Successfully automated SSL certificate lifecycle management with 95% error reduction and 90% time savings
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                            <i class="fas fa-users text-blue-400 text-3xl mb-4"></i>
+                            <h3 class="text-xl font-bold mb-4">Industry Impact</h3>
+                            <p class="text-sm opacity-90">
+                                Addresses critical need for automated SSL management in modern web development and DevOps workflows
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                            <i class="fas fa-chart-line text-green-400 text-3xl mb-4"></i>
+                            <h3 class="text-xl font-bold mb-4">Future Ready</h3>
+                            <p class="text-sm opacity-90">
+                                Scalable architecture provides foundation for enterprise features and multi-provider support
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 max-w-4xl mx-auto">
+                        <h3 class="text-2xl font-bold mb-6">Key Achievements</h3>
+                        <div class="grid md:grid-cols-2 gap-6 text-left">
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span>Automated DNS-01 validation with GoDaddy integration</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span>Modern React-based user interface with real-time monitoring</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span>FastAPI backend with comprehensive documentation</span>
+                                </li>
+                            </ul>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span>Docker containerization for easy deployment</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span>Multi-format certificate export and server guides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span>Security best practices and error handling</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-lg opacity-90 mb-8">
+                        The SSL Automation Tool successfully transforms manual certificate management into an efficient, automated process, providing significant value to StartMySafari Innovations and the broader web development community.
+                    </div>
+
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Thank You</h3>
+                        <p class="text-lg opacity-80">
+                            Questions & Discussion
+                        </p>
+                        <div class="mt-8 text-sm opacity-70">
+                            <p><strong>Dipak Nivrutti Rathod</strong> | MCD004036</p>
+                            <p>Master of Computer Application</p>
+                            <p>Dr. Babasaheb Ambedkar Marathwada University, Chhatrapati Sambhajinagar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Slide Navigation -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div class="flex space-x-3">
+            <button onclick="scrollToSlide('prev')" class="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors">
+                <i class="fas fa-chevron-up text-gray-600"></i>
+            </button>
+            <button onclick="scrollToSlide('next')" class="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors">
+                <i class="fas fa-chevron-down text-gray-600"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Slide Indicator -->
+    <div class="fixed left-6 top-1/2 transform -translate-y-1/2 z-50">
+        <div class="flex flex-col space-y-2">
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator active" data-slide="0"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="1"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="2"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="3"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="4"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="5"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="6"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="7"></div>
+            <div class="w-2 h-8 bg-white/30 rounded-full slide-indicator" data-slide="8"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active', 'bg-white');
+                    indicator.classList.remove('bg-white/30');
+                } else {
+                    indicator.classList.remove('active', 'bg-white');
+                    indicator.classList.add('bg-white/30');
+                }
+            });
+        }
+        
+        function scrollToSlide(direction) {
+            if (direction === 'next' && currentSlide < slides.length - 1) {
+                currentSlide++;
+            } else if (direction === 'prev' && currentSlide > 0) {
+                currentSlide--;
+            }
+            
+            slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+            updateIndicators();
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                scrollToSlide('next');
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                scrollToSlide('prev');
+            }
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Update slide indicator on scroll
+        const container = document.querySelector('.slide-container');
+        container.addEventListener('scroll', () => {
+            const scrollPosition = container.scrollTop;
+            const slideHeight = window.innerHeight;
+            currentSlide = Math.round(scrollPosition / slideHeight);
+            updateIndicators();
+        });
+    </script>
+</body>
+</html>

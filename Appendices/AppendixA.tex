@@ -1,0 +1,181 @@
+% Appendix A
+
+\chapter{User Interface Screens} % Main appendix title
+
+\label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
+
+% Header formatting is now handled in main.tex
+
+This appendix contains screenshots and descriptions of the user interface screens of the SSL Automation Tool.
+
+\section{Main Dashboard}
+
+The SSL Certificate Dashboard serves as the central hub for certificate management operations. It provides an overview of all certificates, their status, and quick access to essential functions.
+
+\subsection{Dashboard Overview}
+
+The main dashboard features:
+\begin{itemize}
+    \item Statistics cards showing certificate counts and status
+    \item Certificate list with sortable columns
+    \item Quick action buttons for certificate operations
+    \item Responsive design for mobile and desktop use
+\end{itemize}
+
+\subsection{Statistics Section}
+
+The statistics cards display:
+\begin{itemize}
+    \item \textbf{Total Certificates}: Aggregate count of all managed certificates
+    \item \textbf{Valid Certificates}: Number of currently valid certificates
+    \item \textbf{Expiring Soon}: Certificates expiring within 30 days (yellow warning)
+    \item \textbf{Invalid Certificates}: Expired or problematic certificates (red alert)
+\end{itemize}
+
+\section{Certificate Generation Dialog}
+
+The certificate generation interface provides a comprehensive form for creating new SSL certificates with proper validation and user guidance.
+
+\subsection{Basic Information Fields}
+
+\begin{itemize}
+    \item \textbf{Domain}: Target domain for certificate generation
+    \item \textbf{Email}: Contact email for Let's Encrypt registration
+    \item \textbf{DNS Provider}: Currently supporting GoDaddy with dropdown selection
+\end{itemize}
+
+\subsection{DNS Configuration Section}
+
+\begin{itemize}
+    \item \textbf{API Key}: Secure input field for DNS provider API key
+    \item \textbf{API Secret}: Password-masked field for API secret
+    \item \textbf{Base Domain}: Base domain for DNS record management
+\end{itemize}
+
+\subsection{Advanced Settings (Expandable)}
+
+\begin{itemize}
+    \item \textbf{TTL Setting}: Configurable DNS record time-to-live (default: 600)
+    \item \textbf{Propagation Delay}: DNS propagation wait time (default: 60 seconds)
+\end{itemize}
+
+\subsection{Progress Indicators}
+
+During certificate generation, the interface shows:
+\begin{itemize}
+    \item Real-time progress updates
+    \item Step-by-step process indicators
+    \item Success/error notifications
+    \item Loading animations for user feedback
+\end{itemize}
+
+\section{Certificate List View}
+
+The certificate list provides comprehensive management capabilities with sortable columns and action buttons.
+
+\subsection{Column Information}
+
+\begin{itemize}
+    \item \textbf{Domain}: Certificate domain name with support for wildcards
+    \item \textbf{Status Badge}: Color-coded status indicator
+    \begin{itemize}
+        \item Green: Valid certificate (>30 days remaining)
+        \item Yellow: Expiring soon (7-30 days remaining)
+        \item Red: Expired or invalid (<7 days or expired)
+    \end{itemize}
+    \item \textbf{Issued Date}: Certificate generation timestamp
+    \item \textbf{Expires On}: Certificate expiration date
+    \item \textbf{Actions}: Download and management options
+\end{itemize}
+
+\subsection{Action Buttons}
+
+Each certificate row provides:
+\begin{itemize}
+    \item \textbf{Download Fullchain}: Downloads fullchain.pem file
+    \item \textbf{Download Private Key}: Downloads privkey.pem file
+    \item \textbf{Download ZIP}: Downloads complete certificate bundle
+    \item \textbf{View Details}: Shows detailed certificate information
+\end{itemize}
+
+\section{Documentation Interface}
+
+The documentation system provides comprehensive guides for server configuration and certificate deployment.
+
+\subsection{Tab Navigation}
+
+The documentation is organized into tabs:
+\begin{itemize}
+    \item \textbf{Overview}: General information about SSL certificates
+    \item \textbf{Nginx}: Complete Nginx SSL configuration guide
+    \item \textbf{Apache}: Apache HTTP server SSL setup
+    \item \textbf{Docker}: Container-based deployment strategies
+    \item \textbf{Troubleshooting}: Common issues and solutions
+\end{itemize}
+
+\subsection{Code Examples}
+
+Each documentation section includes:
+\begin{itemize}
+    \item Syntax-highlighted configuration examples
+    \item Copy-to-clipboard functionality
+    \item Step-by-step implementation guides
+    \item Best practices and security recommendations
+\end{itemize}
+
+\section{Dark Mode Interface}
+
+The application supports both light and dark themes with automatic detection and manual toggle capabilities.
+
+\subsection{Theme Features}
+
+\begin{itemize}
+    \item \textbf{Automatic Detection}: Respects system theme preferences
+    \item \textbf{Manual Toggle}: Theme switcher in the header
+    \item \textbf{Consistent Styling}: All components adapt to theme changes
+    \item \textbf{Accessibility}: High contrast ratios for readability
+\end{itemize}
+
+\section{Mobile Responsive Design}
+
+The interface adapts to various screen sizes and device orientations.
+
+\subsection{Mobile Adaptations}
+
+\begin{itemize}
+    \item \textbf{Responsive Grid}: Statistics cards stack vertically on mobile
+    \item \textbf{Collapsible Tables}: Certificate list optimized for mobile viewing
+    \item \textbf{Touch-Friendly}: Buttons and interactions optimized for touch
+    \item \textbf{Navigation}: Hamburger menu for mobile navigation
+\end{itemize}
+
+\subsection{Tablet Interface}
+
+\begin{itemize}
+    \item \textbf{Hybrid Layout}: Combines desktop and mobile elements
+    \item \textbf{Split View}: Side-by-side content where appropriate
+    \item \textbf{Touch Navigation}: Optimized for tablet interaction patterns
+\end{itemize}
+
+\section{Error and Success Notifications}
+
+The application provides comprehensive feedback through toast notifications and inline messaging.
+
+\subsection{Notification Types}
+
+\begin{itemize}
+    \item \textbf{Success Notifications}: Green toast for successful operations
+    \item \textbf{Error Messages}: Red toast with detailed error information
+    \item \textbf{Warning Alerts}: Yellow notifications for important information
+    \item \textbf{Info Messages}: Blue notifications for general information
+\end{itemize}
+
+\subsection{Error Handling Interface}
+
+\begin{itemize}
+    \item \textbf{Form Validation}: Real-time field validation with error highlighting
+    \item \textbf{API Error Display}: Detailed error messages from backend operations
+    \item \textbf{Retry Mechanisms}: Options to retry failed operations
+    \item \textbf{Help Context}: Links to relevant documentation for error resolution
+\end{itemize}
+

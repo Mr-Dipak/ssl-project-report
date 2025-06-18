@@ -1,0 +1,587 @@
+\documentclass[12pt, a4paper
+,openany
+]{Thesis} % Paper size, default font size and one-sided paper
+%% Change format for two-sided printing
+\newcounter{print}
+\setcounter{print}{0}    
+    % comment out line 2 and give argument 1 for print layout
+    % uncomment line 2 and give argument 0 for digital layout
+    
+
+
+\def\dissertationTitleX{SSL Automation Tool\\For\\StartMySafari Innovations Private Limited (smsipl)}
+\def\dissertationTitle{SSL Automation Tool}
+\def\degree{Master of Computer Application}
+\def\ttitle{Project Report}
+\def\authornames{Dipak Nivrutti Rathod}
+\def\authorrollno{MCD004036}
+\def\deptname{Department of Management Science}
+\def\univname{Dr. Babasaheb Ambedkar Marathwada University, Chhatrapati Sambhajinagar}
+
+\usepackage{sectsty}
+\chapterfont{\centering}
+\usepackage{emptypage}
+\usepackage{nicefrac}
+\usepackage[inkscapeformat=png]{svg}
+% \usepackage[none]{hyphenat}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+% Custom border for title and certificate page
+\usepackage{fancybox}
+\newcommand{\thickborder}[1]{%
+  \setlength{\fboxrule}{2pt}%
+  \setlength{\fboxsep}{8pt}%
+  \fbox{#1}%
+}
+
+% \usepackage[resetlabels,labeled]{multibib}
+
+\usepackage[utf8]{inputenc}
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsmath, nccmath}
+\usepackage{comment}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{cleveref}
+\usepackage{rotating}
+% \usepackage[font=small]{caption}
+% \captionsetup{compatibility=false}
+% \usepackage{subcaption}
+% \usepackage{subfig}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{placeins}
+\usepackage{adjustbox}
+\usepackage{arydshln} % dashed midline
+\usepackage{ragged2e}
+\usepackage{lipsum}
+\usepackage{mathtools} % To use box inside an aligned environment
+\usepackage{enumitem} % for roman letter lists
+% \usepackage{subfig}
+\newcommand\myemptypage{
+    \newpage
+    \null
+    \pagestyle{empty}
+    % \addtocounter{page}{-1}
+    \newpage
+    \pagestyle{plain}
+    }
+%\usepackage[width=14cm, left=3cm]{geometry}
+
+% prints author names as small caps
+
+
+%\usepackage{subcaption} %incompatible with subfig
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+% \usepackage[authoryear]{natbib}
+%\usepackage[square, numbers]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' v
+%\bibliographystyle{abbrvnat}
+%\setcitestyle{authoryear,open={((},close={))}}
+\hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoyingv`	
+\title{\ttitle} % Defines the thesis title - don't touch this
+
+
+
+
+%%%% New added
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+% Defining Tickz Style
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, text width = 10cm, draw=black, fill=white]
+
+% \tikzstyle{startstop1} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=white, text width = 10cm]
+
+% \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, text width = 4.5cm, draw=black, fill=blue!30]
+
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width = 6cm, draw=black, fill=white, text width = 10cm]
+
+% \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+
+\tikzstyle{arrow} = [ultra thick,->,>=stealth, line width=0.7mm]
+
+% Add calc library for positioning in borders
+\usetikzlibrary{calc}
+
+
+
+
+
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+
+% Define a nice-looking page style with consistent headers and footers
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[LE,RO]{\thepage} % Left on even pages, right on odd pages for page number
+\fancyhead[RE]{\textit{\nouppercase{\leftmark}}} % Right on even pages chapter
+\fancyhead[LO]{\textit{\nouppercase{\rightmark}}} % Left on odd pages section
+\fancyfoot[C]{} % No footer
+\renewcommand{\headrulewidth}{0.4pt} % Line thickness at the header
+\renewcommand{\footrulewidth}{0pt} % No line at the footer
+\fancypagestyle{plain}{%
+  \fancyhf{} % Clear header and footer fields
+  \fancyfoot[C]{\thepage} % Center-bottom page number on plain pages
+  \renewcommand{\headrulewidth}{0pt} % No line at the header
+  \renewcommand{\footrulewidth}{0pt} % No line at the footer
+}
+
+% Redefine chapter and section marks to be more consistent
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+
+\begin{document}
+
+% Add 2 blank pages at the beginning
+\thispagestyle{empty}
+\null
+\newpage
+
+\thispagestyle{empty}
+\null
+\newpage
+
+% prints author names as small caps
+% it is sometimes necessary in user documents to have access to such package-internal macros, and so the commands \makeatletter and \makeatother change the catcode 
+
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\setstretch{1.6} % Line spacing of 1.6 (double line spacing)
+
+% Define the page headers using the FancyHdr package and set up for one-sided printing
+\fancyhead{} % Clears all page headers and footers
+\fancyfoot{}
+% \rhead{\thepage} % Sets the right side header to show the page number
+% \lhead{} % Clears the left side page header
+\fancyhead[LE,RO]{\thepage} % page at left on even and right on odd pages
+
+\pagestyle{fancy} % Finally, use the "fancy" page style to implement the FancyHdr headers
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % New command to make the lines in the title page
+
+% PDF meta-data
+\hypersetup{pdftitle={\ttitle}}
+% \hypersetup{pdfsubject=\subjectname}
+\hypersetup{pdfauthor=\authornames}
+% \hypersetup{pdfkeywords=\keywordnames}
+
+
+
+
+% --------------------------------------------------
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\begin{comment}
+\begin{titlepage}
+\begin{center}
+
+\HRule \\[0.4cm] % Horizontal line
+{\huge \bfseries \ttitle}\\[0.4cm] % Thesis title
+\HRule \\[1.5cm] % Horizontal line
+ 
+\large \textit{A thesis submitted in fulfillment of the requirements\\ for the degree of \degreename}\\[0.3cm] % University requirement text
+\textit{by}\\[0.4cm]
+
+%\href{http://home.iitk.ac.in/~saiwal}{\authornames}
+
+\vfill
+\graphicspath{ {./Figures/} }
+\begin{figure}[hb]
+  \centering
+  \includegraphics[width=0.4\linewidth]{Images/redlogo.png}
+\end{figure}
+
+\DEPTNAME\\ % Research group name and department name
+\textsc{ \UNIVNAME}\\[1.5cm] % University name
+\large \today\\[2cm] % Date
+
+
+\end{center}
+
+\end{titlepage}
+\end{comment}
+%\begin{document}
+%\begin{titlepage}
+
+
+%\include{title1}
+%\end{titlepage}
+%\myemptypage
+%\afterpage{\null\newpage}
+%\include{blank_page_1}
+%\newpage
+%\newpage
+\include{title}
+\include{certificate} % Adding certificate page
+\include{Acknowledgements}
+
+% \newpage
+% \myemptypage
+\frontmatter
+\setstretch{1.3}
+\pagestyle{plain}
+% %----------------------------------------------------------------------------------------
+% %	DEDICATION
+% %----------------------------------------------------------------------------------------
+% %
+% \setstretch{1.3} % Return the line spacing back to 1.3
+% \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+% %
+
+% %
+% \dedicatory{\textit{Dedicated to my beloved parents.}} % Dedication text
+% % \thispagestyle{empty}
+% %
+
+% % \myemptypage
+
+% %----------------------------------------------------------------------------------------
+% Approval page
+%----------------------------------------------------------------------------------------
+%\thispagestyle{empty} % Page style needs to be empty for this page
+%
+%\addtotoc{Approval}
+%\addtocontents{toc}{}
+%% \pagenumbering{roman}
+%% \cfoot{\thepage}
+%% \setcounter{page}{3}
+%\vspace{-1in}
+%\begin{center}
+%{\LARGE  {\bf Dissertation Approval}}
+%\end{center}
+%\vspace*{0.1in} \noindent This project report entitled {\large \bf \dissertationTitle} by {\bf \large \authornames}, Roll No. \authorrollno, is submitted for the degree of  {\large \bf \degree} from Dr. Babasaheb Ambedkar Marathwada University, Chhatrapati Sambhajinagar.\\\\
+%
+%\vspace{2cm}
+%
+%  \hspace*{0.8cm}\ldots\ldots \ldots\ldots \ldots\ldots \ldots\ldots  \hspace{2in}  \ldots\ldots \ldots\ldots \ldots\ldots \ldots\ldots \\
+%  \hspace*{0.4cm}\hspace*{0cm} Dr. Kavari Lad \hspace{1.85in} Prof. Abhijeet Shelke\\
+%  \hspace*{0.8cm}\hspace*{0.9cm} (Project Guide) \hspace{2.8in} (Director)\\\\
+%
+%\vspace{2cm}
+%
+%  \hspace*{0.8cm}\ldots\ldots \ldots\ldots \ldots\ldots \ldots\ldots
+%  \\
+%  \hspace*{0.8cm}\hspace*{0cm} External Examiner 
+%  \\
+%  \hspace*{0.8cm}\hspace*{0.9cm} (External Examiner) 
+%  \\\\
+%
+%\vspace{1.5cm}
+%
+%\noindent
+% \hspace*{0.8cm}Submission Date: June 2025\\\\
+% \hspace*{0.8cm}Place: Dr. Babasaheb Ambedkar Marathwada University
+%
+%
+%\ifnum \value{print}>0 {\myemptypage} \else {\clearpage} \fi
+
+%-------------------------------------------------------------
+%	DECLARATION PAGE
+%	Your institution may give you a different text to place here
+%----------------------------------------------------------------------------------------
+
+% ------------------------------------------------
+% Professor's declaration
+%\ifnum \value{print}>0 {\setcounter{page}{3}} \fi
+%
+%\Declaration{\addtocontents{toc}{} % Add a gap in the Contents, for aesthetics
+%\vspace*{0.1in}
+%This is to certify that the project report entitled \textbf{``\dissertationTitle''}, submitted by \textbf{\authornames} to Dr. Babasaheb Ambedkar Marathwada University, Chhatrapati Sambhajinagar, for the award of the degree of \textbf{\degree} in Computer Application, is a record of the original, bona fide project work carried out by him under our supervision and guidance at StartMySafari Innovations Private Limited (smsipl). The project report has reached the standards fulfilling the requirements of the regulations related to the award of the degree.
+%
+%\par The results contained in this project report have not been submitted in part or in full to any other University or Institute for the award of any degree or diploma to the best of our knowledge.
+%\bigskip
+%\bigskip
+%\bigskip
+%\bigskip
+%
+%
+%\vspace*{2.5cm} %\vfill
+%
+%\begin{flushleft}
+%\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\\
+%\vspace{2mm}
+%\textbf{Dr. Kavari Lad}\\
+%Project Guide\\
+%Dr. Babasaheb Ambedkar Marathwada University,\\
+%Chhatrapati Sambhajinagar.
+%\end{flushleft}
+%%\end{multicols}
+%\vfill{}
+%}
+%
+%\ifnum \value{print}>0 {\myemptypage} \else {\clearpage} \fi
+
+% ------------------------------------------------
+% Student declaration
+%\ifnum \value{print}>0 {\setcounter{page}{5}} \fi
+%
+%\addtotoc{Declaration} % Add the "Scope for future work" page entry to the Contents
+%
+%{\addtocontents{toc}{} % Add a gap in the Contents, for aesthetics
+%
+%\begin{center}
+%    \textbf{\LARGE {Declaration}}
+%\end{center}}
+%\vspace*{0.1in}
+%I declare that this written submission represents my ideas in my own words. Where others' ideas and words have been included, I have adequately cited and referenced the original source. I declare that I have adhered to all principles of academic honesty and integrity and have not misrepresented or fabricated, or falsified any idea/data/fact/source in my submission. I understand that any violation of the above will cause disciplinary action by the Institute and can also evoke penal action from the source which has thus not been properly cited or from whom proper permission has not been taken when needed.
+%
+%\bigskip
+%\bigskip
+%\bigskip
+%\bigskip
+%
+%
+%\vspace*{2.5cm} %\vfill
+%\begin{flushleft}
+%\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots\\
+%\vspace{2mm}
+%\textbf{\authornames} \\
+%Roll No.: \authorrollno \\
+%Date: <Date>\\
+%Place: IIT Bombay
+%\end{flushleft}
+%
+%\ifnum \value{print}>0 {\myemptypage} \else {\clearpage} \fi
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+\ifnum \value{print}>0 {\setcounter{page}{7}} \fi
+
+\addtotoc{Abstract} % Add the "Abstract" page entry to the Contents 
+\addtocontents{toc}{} % Add a gap in the Contents, for aesthetics
+\thispagestyle{plain}
+\abstract{
+\setstretch{1.5}
+    %%%%%%%%%%%%%%%%%
+\vspace*{0.3in}
+This project presents the design, implementation, and evaluation of an SSL Automation Tool developed for StartMySafari Innovations Private Limited (smsipl). The system addresses critical challenges in SSL certificate management by automating the entire certificate lifecycle—from generation and validation to deployment and renewal. The solution integrates with Let's Encrypt to provide free, automated SSL certificates using DNS-01 validation methods, particularly focusing on GoDaddy DNS provider integration.
+
+The system architecture follows a modern microservices approach with a React-based frontend and FastAPI backend. The frontend delivers an intuitive user interface with real-time certificate status monitoring, while the backend handles complex certificate operations through Let's Encrypt's ACME protocol. Container-based deployment ensures scalability and consistent operation across environments.
+
+Key innovations include automated DNS challenge validation, certificate bundling for various server configurations, and proactive expiration monitoring. Performance testing demonstrates significant time savings compared to manual certificate management processes—reducing certificate generation time from approximately 30 minutes to under 2 minutes per domain.
+
+The project successfully addresses the industry requirements for automated SSL management while providing a foundation for future enhancements. Implementation results show improved operational efficiency, reduced human error, and enhanced security compliance for web applications requiring HTTPS connections.
+
+\vspace*{2cm}
+
+\textit{Keywords} — SSL Certificate Management, Let's Encrypt, DNS Validation, Web Security, Automation, FastAPI, React, Microservices Architecture
+    %%%%%%%%%%%%%%%%
+}
+\thispagestyle{plain}
+\clearpage
+
+
+% \myemptypage
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
+
+% \setcounter{page}{9}
+\ifnum \value{print}=0 {\setcounter{page}{6}}
+\pagestyle{fancy} % The page style headers have been "empty" all this time, now use the "fancy" headers as defined before to bring them back
+
+\chead{\emph{Contents}} % Set the left side page header to "Contents"
+
+\ifnum \value{print}>0 {\tableofcontents} \else {\setcounter{page}{6}\let\cleardoublepage\clearpage\tableofcontents } \fi
+
+%combine figues and tables under tables, rename title appropriately
+% \makeatletter
+% \renewcommand*{\ext@figure}{lot}
+% \let\c@figure\c@table
+% \let\ftype@figure\ftype@table
+% \let\listoftableandfigures\listoftables
+% \renewcommand*\listtablename{List of Figures and Tables}
+% \makeatother
+
+\chead{\emph{List of Figures}} % Set the left side page header to "List of Figures"
+\ifnum \value{print}>0 {\listoffigures} \else {\setcounter{page}{10}\let\cleardoublepage\clearpage\listoffigures} \fi
+% \listoffigures % Write out the List of Figures
+
+\chead{\emph{List of Tables}} % Set the left side page header to "List of Tables"
+\ifnum \value{print}>0 {\listoftables} \else {\setcounter{page}{12}\let\cleardoublepage\clearpage\listoftables} \fi
+% \listoftables % Write out the List of Tables
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+\clearpage % Start a new page
+
+\setstretch{1.5} % Set the line spacing to 1.5, this makes the following tables easier to read
+
+\chead{\emph{Abbreviations}} % Set the left side page header to "Abbreviations"
+\listofsymbols{ll} % Include a list of Abbreviations (a table of two columns)
+{
+
+% \textbf{SM} & \textbf{S}afety \textbf{M}argin\\
+
+\textbf{SSL}  & \textbf{S}ecure \textbf{S}ockets \textbf{L}ayer \\
+\textbf{TLS}  & \textbf{T}ransport \textbf{L}ayer \textbf{S}ecurity \\
+\textbf{HTTPS} & \textbf{H}yper\textbf{T}ext \textbf{T}ransfer \textbf{P}rotocol \textbf{S}ecure \\
+\textbf{CA} & \textbf{C}ertificate \textbf{A}uthority \\
+\textbf{DNS}  & \textbf{D}omain \textbf{N}ame \textbf{S}ystem \\
+\textbf{API} & \textbf{A}pplication \textbf{P}rogramming \textbf{I}nterface \\
+\textbf{CSR} & \textbf{C}ertificate \textbf{S}igning \textbf{R}equest \\
+\textbf{PKI} & \textbf{P}ublic \textbf{K}ey \textbf{I}nfrastructure \\
+\textbf{ACME} & \textbf{A}utomated \textbf{C}ertificate \textbf{M}anagement \textbf{E}nvironment \\
+\textbf{JSON} & \textbf{J}ava\textbf{S}cript \textbf{O}bject \textbf{N}otation \\
+\textbf{REST} & \textbf{RE}presentational \textbf{S}tate \textbf{T}ransfer \\
+\textbf{UI} & \textbf{U}ser \textbf{I}nterface \\
+\textbf{UX} & \textbf{U}ser \textbf{E}xperience \\
+\textbf{CI/CD} & \textbf{C}ontinuous \textbf{I}ntegration/\textbf{C}ontinuous \textbf{D}eployment \\
+\textbf{SPA} & \textbf{S}ingle \textbf{P}age \textbf{A}pplication \\
+\textbf{JWT} & \textbf{J}SON \textbf{W}eb \textbf{T}oken \\
+\textbf{DRY} & \textbf{D}on't \textbf{R}epeat \textbf{Y}ourself \\
+\textbf{SOLID} & \textbf{S}ingle Responsibility, \textbf{O}pen-closed, \textbf{L}iskov Substitution, \textbf{I}nterface Segregation, \textbf{D}ependency Inversion \\
+\textbf{MVC} & \textbf{M}odel-\textbf{V}iew-\textbf{C}ontroller \\
+\textbf{HTTP} & \textbf{H}yper\textbf{T}ext \textbf{T}ransfer \textbf{P}rotocol \\
+
+}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	SYMBOLS
+%----------------------------------------------------------------------------------------
+
+\clearpage % Start a new page
+\setstretch{1.5} % Set the line spacing to 1.5, this makes the following tables easier to read
+
+\chead{\emph{Symbols}} % Set the left side page header to "Symbols"
+
+\listofnomenclature{lll} % Include a list of Symbols (a two column table)
+{
+$X.509$ & Standard format for public key certificates \\
+$RSA$ & Rivest-Shamir-Adleman public-key cryptosystem \\
+$ECDSA$ & Elliptic Curve Digital Signature Algorithm \\
+$SHA-256$ & Secure Hash Algorithm (256-bit) \\
+$AES-256$ & Advanced Encryption Standard (256-bit) \\
+$DNS-01$ & DNS challenge type for domain validation \\
+$HTTP-01$ & HTTP challenge type for domain validation \\
+$PKCS\#12$ & Public Key Cryptography Standards format for storing certificates \\
+$PEM$ & Privacy Enhanced Mail format for storing certificates \\
+$DER$ & Distinguished Encoding Rules format for certificates \\
+$CN$ & Common Name in certificate subject field \\
+$SAN$ & Subject Alternative Name in certificate \\
+$OCSP$ & Online Certificate Status Protocol \\
+$CRL$ & Certificate Revocation List \\
+$CT$ & Certificate Transparency \\
+$TTL$ & Time To Live for DNS records \\
+$FQDN$ & Fully Qualified Domain Name \\
+$CORS$ & Cross-Origin Resource Sharing \\
+$OAuth$ & Open Authorization protocol \\
+$RBAC$ & Role-Based Access Control \\
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{fancy} % Return the page headers back to the "fancy" style
+
+% Include the chapters of the thesis as separate files from the Chapters folder
+% Following the project report structure from the guide
+
+\input{Chapters/Chapter_1/Chapter1}  % Introduction
+\input{Chapters/Chapter_2/Chapter2}  % Proposed System  
+\input{Chapters/Chapter_3/Chapter3}  % Analysis & Design
+\input{Chapters/Chapter_4/Chapter4}  % User Manual
+
+\clearpage % Start a new page
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Following the project report structure from the guide
+
+\input{Appendices/AppendixA} % User Interface Screens
+\input{Appendices/AppendixB} % Sample Program Code
+\input{Appendices/AppendixC} % Additional Documentation
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\backmatter
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\label{References}
+
+\chead{\emph{References}} % Change the page header to say "Bibliography"
+%\usepackage{natbib}
+%\renewcommand{\refname}{References}
+
+\makeatletter
+\interlinepenalty=10000     % don't split a single reference across page break
+
+\renewcommand\bibname{References}
+\bibliographystyle{ieeetr} % Use the "custom" BibTeX style for formatting the Bibliography
+%\setcitestyle{authoryear,open={((},close={))}}
+
+\bibliography{references} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+% \newcites{publ}{Publications by the candidate}
+
+\clearpage
+\section*{Publications and Presentations}
+\begin{enumerate}
+    \item SSL Automation Tool Development: Presented at StartMySafari Innovations Private Limited internal technical review, June 2025.
+    \item "Automated SSL Certificate Management using Let's Encrypt and DNS Validation" - Technical report submitted as part of MCA project requirements, Dr. Babasaheb Ambedkar Marathwada University, June 2025.
+\end{enumerate}
+
+\makeatother
+% \newpage
+% \include{LOP}
+% \newpage
+% \include{Biography}
+\include{Acknowledgements}
+
+% Command for setting the heading on chapter pages to plain style
+\let\origchapter\chapter
+\renewcommand{\chapter}[1]{%
+  \origchapter{#1}%
+  \thispagestyle{plain}% Use plain style for the first page of each chapter
+}
+
+% Add 2 blank pages at the end of the document
+\thispagestyle{empty}
+\null
+\newpage
+
+\thispagestyle{empty}
+\null
+\newpage
+
+\end{document}  

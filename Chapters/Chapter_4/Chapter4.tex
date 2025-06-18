@@ -1,0 +1,348 @@
+% Chapter 4
+
+\chapter{User Manual}\doublespacing % Main chapter title
+
+\label{Chapter4} % For referencing this chapter elsewhere, use \ref{Chapter4}
+
+% Header formatting is now handled in main.tex
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{User Manual}
+
+This chapter provides comprehensive guidance for using the SSL Automation Tool, including installation procedures, operation instructions, and troubleshooting guidelines.
+
+\subsection{System Requirements}
+
+Before using the SSL Automation Tool, ensure your system meets the following requirements:
+
+\subsubsection{For End Users}
+\begin{itemize}
+    \item Modern web browser (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
+    \item Internet connection for accessing Let's Encrypt and DNS provider APIs
+    \item GoDaddy account with API credentials (for DNS validation)
+    \item Domain administrative access for certificate deployment
+\end{itemize}
+
+\subsubsection{For System Administrators}
+\begin{itemize}
+    \item Docker 20.10+ and Docker Compose 2.0+
+    \item Linux-based server (Ubuntu 20.04+ recommended)
+    \item Minimum 2GB RAM and 10GB storage space
+    \item Network access to external APIs (Let's Encrypt, DNS providers)
+\end{itemize}
+
+\subsection{Installation Guide}
+
+\subsubsection{Quick Start with Docker}
+
+1. Clone the project repository:
+\begin{verbatim}
+git clone <repository-url>
+cd ssl-automation-tool
+\end{verbatim}
+
+2. Start the services using Docker Compose:
+\begin{verbatim}
+docker compose up -d
+\end{verbatim}
+
+3. Access the application at \texttt{http://localhost:3000}
+
+\subsubsection{Development Setup}
+
+For developers who want to run the system in development mode:
+
+1. \textbf{Backend Setup}:
+\begin{verbatim}
+cd ssl-automation-backend
+pip install uv
+uv sync
+uv run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+\end{verbatim}
+
+2. \textbf{Frontend Setup}:
+\begin{verbatim}
+cd ssl-automation-frontend
+pnpm install
+pnpm dev
+\end{verbatim}
+
+\section{Operations Manual / Menu Explanation}
+
+\subsection{Main Dashboard}
+
+Upon accessing the application, users are presented with the SSL Certificate Dashboard containing the following sections:
+
+\subsubsection{Statistics Cards}
+\begin{itemize}
+    \item \textbf{Total Certificates}: Shows the total number of managed certificates
+    \item \textbf{Valid Certificates}: Displays count of currently valid certificates
+    \item \textbf{Expiring Soon}: Alerts for certificates expiring within 30 days
+    \item \textbf{Invalid Certificates}: Count of expired or invalid certificates
+\end{itemize}
+
+\subsubsection{Certificate List}
+The certificate list displays all managed certificates with the following information:
+\begin{itemize}
+    \item \textbf{Domain}: The domain name for which the certificate was issued
+    \item \textbf{Status}: Visual indicator showing certificate validity status
+    \item \textbf{Issued Date}: When the certificate was generated
+    \item \textbf{Expires On}: Certificate expiration date
+    \item \textbf{Actions}: Download options for certificate files
+\end{itemize}
+
+\subsubsection{Action Buttons}
+\begin{itemize}
+    \item \textbf{Generate Certificate}: Opens the certificate generation dialog
+    \item \textbf{Refresh List}: Updates the certificate list with latest information
+    \item \textbf{Download Individual Files}: Downloads specific certificate components
+    \item \textbf{Download ZIP Bundle}: Downloads complete certificate package
+\end{itemize}
+
+\subsection{Certificate Generation Process}
+
+\subsubsection{Step 1: Access Generation Dialog}
+Click the "Generate Certificate" button to open the certificate generation form.
+
+\subsubsection{Step 2: Enter Domain Information}
+\begin{itemize}
+    \item \textbf{Domain}: Enter the target domain (e.g., example.com or *.example.com for wildcard)
+    \item \textbf{Email}: Provide email address for Let's Encrypt registration
+\end{itemize}
+
+\subsubsection{Step 3: Configure DNS Provider}
+\begin{itemize}
+    \item \textbf{DNS Provider}: Select "GoDaddy" from the dropdown
+    \item \textbf{API Key}: Enter your GoDaddy API key
+    \item \textbf{API Secret}: Enter your GoDaddy API secret
+    \item \textbf{Base Domain}: Specify the base domain for DNS operations
+\end{itemize}
+
+\subsubsection{Step 4: Advanced Settings (Optional)}
+\begin{itemize}
+    \item \textbf{TTL}: DNS record time-to-live (default: 600 seconds)
+    \item \textbf{Propagation Delay}: Wait time for DNS propagation (default: 60 seconds)
+\end{itemize}
+
+\subsubsection{Step 5: Generate Certificate}
+Click "Generate Certificate" to start the process. Monitor the progress indicators for:
+\begin{itemize}
+    \item Request validation
+    \item DNS challenge setup
+    \item Domain verification
+    \item Certificate generation
+    \item File storage completion
+\end{itemize}
+
+\subsection{Certificate Download and Deployment}
+
+\subsubsection{Individual File Downloads}
+For each certificate, users can download:
+\begin{itemize}
+    \item \textbf{fullchain.pem}: Complete certificate chain (certificate + intermediate CA)
+    \item \textbf{privkey.pem}: Private key file (keep secure)
+\end{itemize}
+
+\subsubsection{ZIP Bundle Download}
+Download a complete ZIP archive containing both certificate files for convenient deployment.
+
+\subsubsection{Server Configuration}
+Access the Documentation section for detailed server configuration guides:
+\begin{itemize}
+    \item Nginx SSL configuration
+    \item Apache SSL setup
+    \item Docker deployment strategies
+    \item Troubleshooting common issues
+\end{itemize}
+
+\section{Program Specifications / Flow Charts}
+
+\subsection{Certificate Generation Workflow}
+
+The following flowchart illustrates the complete certificate generation process:
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {User Initiates Certificate Generation};
+\node (input) [process, below of=start] {User Provides Domain and DNS Credentials};
+\node (validate) [process, below of=input] {System Validates Input Parameters};
+\node (certbot) [process, below of=validate] {Certbot Initiates ACME Challenge};
+\node (dns) [process, below of=certbot] {DNS Hook Creates TXT Record};
+\node (verify) [process, below of=dns] {Let's Encrypt Verifies Domain};
+\node (generate) [process, below of=verify] {Certificate Files Generated};
+\node (store) [process, below of=generate] {Files Stored in Persistent Volume};
+\node (complete) [startstop, below of=store] {Certificate Available for Download};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (validate);
+\draw [arrow] (validate) -- (certbot);
+\draw [arrow] (certbot) -- (dns);
+\draw [arrow] (dns) -- (verify);
+\draw [arrow] (verify) -- (generate);
+\draw [arrow] (generate) -- (store);
+\draw [arrow] (store) -- (complete);
+
+\end{tikzpicture}
+\caption{Certificate Generation Process Flow}
+\label{fig:cert-generation-flow}
+\end{figure}
+
+\subsection{Error Handling Workflow}
+
+The system implements comprehensive error handling at each stage:
+
+\begin{enumerate}
+    \item \textbf{Input Validation Errors}: Form validation provides immediate feedback
+    \item \textbf{DNS API Errors}: Credential validation and API response handling
+    \item \textbf{ACME Challenge Errors}: Retry mechanisms with exponential backoff
+    \item \textbf{Certificate Generation Errors}: Detailed error reporting and recovery guidance
+\end{enumerate}
+
+\subsection{System Architecture Flow}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=3cm]
+
+\node (user) [startstop] {User Browser};
+\node (frontend) [process, right of=user] {React Frontend};
+\node (api) [process, right of=frontend] {FastAPI Backend};
+\node (certbot) [process, below of=api] {Certbot Service};
+\node (dns) [process, left of=certbot] {DNS Provider API};
+\node (le) [process, right of=certbot] {Let's Encrypt};
+
+\draw [arrow] (user) -- (frontend);
+\draw [arrow] (frontend) -- (api);
+\draw [arrow] (api) -- (certbot);
+\draw [arrow] (certbot) -- (dns);
+\draw [arrow] (certbot) -- (le);
+
+\end{tikzpicture}
+\caption{System Architecture Data Flow}
+\label{fig:system-architecture-flow}
+\end{figure}
+
+\section{Drawbacks and Limitations}
+
+\subsection{Current System Limitations}
+
+\begin{enumerate}
+    \item \textbf{DNS Provider Support}
+    \begin{itemize}
+        \item Currently limited to GoDaddy DNS provider only
+        \item No support for other major providers (Cloudflare, AWS Route53, etc.)
+        \item Manual configuration required for each DNS provider
+    \end{itemize}
+    
+    \item \textbf{Authentication and Security}
+    \begin{itemize}
+        \item No built-in user authentication system
+        \item API credentials handled client-side only
+        \item No role-based access control implementation
+    \end{itemize}
+    
+    \item \textbf{Certificate Management}
+    \begin{itemize}
+        \item No automatic certificate renewal scheduling
+        \item No certificate revocation capabilities
+        \item Limited certificate metadata tracking
+    \end{itemize}
+    
+    \item \textbf{Scalability Constraints}
+    \begin{itemize}
+        \item Single-instance deployment architecture
+        \item No database integration for certificate metadata
+        \item Limited concurrent request handling
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Technical Limitations}
+
+\begin{enumerate}
+    \item \textbf{Dependency on External Services}
+    \begin{itemize}
+        \item Reliance on Let's Encrypt service availability
+        \item DNS provider API rate limiting
+        \item Internet connectivity requirements
+    \end{itemize}
+    
+    \item \textbf{Error Recovery}
+    \begin{itemize}
+        \item Limited automated error recovery mechanisms
+        \item Manual intervention required for complex failures
+        \item No automatic retry for transient failures
+    \end{itemize}
+\end{enumerate}
+
+\section{Proposed Enhancements}
+
+\subsection{Short-term Improvements}
+
+\begin{enumerate}
+    \item \textbf{Multi-DNS Provider Support}
+    \begin{itemize}
+        \item Implement Cloudflare DNS integration
+        \item Add AWS Route53 support
+        \item Create abstract DNS provider interface
+    \end{itemize}
+    
+    \item \textbf{Enhanced Security}
+    \begin{itemize}
+        \item Implement JWT-based authentication
+        \item Add API key management system
+        \item Implement request rate limiting
+    \end{itemize}
+    
+    \item \textbf{Improved User Experience}
+    \begin{itemize}
+        \item Add certificate renewal notifications
+        \item Implement bulk certificate operations
+        \item Enhanced error messaging and recovery guidance
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Long-term Enhancements}
+
+\begin{enumerate}
+    \item \textbf{Enterprise Features}
+    \begin{itemize}
+        \item Multi-tenant architecture
+        \item Advanced monitoring and analytics
+        \item Integration with CI/CD pipelines
+    \end{itemize}
+    
+    \item \textbf{Automation Improvements}
+    \begin{itemize}
+        \item Automatic certificate renewal scheduling
+        \item Certificate lifecycle automation
+        \item Integration with certificate deployment tools
+    \end{itemize}
+    
+    \item \textbf{Scalability Enhancements}
+    \begin{itemize}
+        \item Database integration for metadata management
+        \item Microservices architecture implementation
+        \item Horizontal scaling capabilities
+    \end{itemize}
+\end{enumerate}
+
+\section{Conclusions}
+
+The SSL Automation Tool successfully addresses the primary challenge of automating SSL certificate generation and management through Let's Encrypt integration. The system provides:
+
+\begin{itemize}
+    \item Streamlined certificate generation with DNS-01 validation
+    \item User-friendly web interface with comprehensive documentation
+    \item Robust backend API with proper error handling
+    \item Container-based deployment for easy scaling
+    \item Extensible architecture for future enhancements
+\end{itemize}
+
+The project demonstrates effective integration of modern web technologies (React 19, Next.js 15, FastAPI) with established certificate management tools (Certbot, Let's Encrypt) to create a practical solution for SSL certificate automation.
+
+Future development should focus on expanding DNS provider support, implementing authentication mechanisms, and adding advanced monitoring capabilities to create a comprehensive enterprise-grade certificate management platform.

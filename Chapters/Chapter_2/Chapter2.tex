@@ -1,0 +1,212 @@
+% Chapter 2
+
+\chapter{Proposed System}\doublespacing % Main chapter title
+
+\label{Chapter2} % For referencing this chapter elsewhere, use \ref{Chapter2}
+
+\fancyhead[OC]{Chapter II. \emph{Proposed System}} % 
+
+\section{Proposed System}
+
+The SSL Automation Tool is a comprehensive web-based solution designed to automate the entire lifecycle of SSL certificate management. The system consists of two main components:
+
+\begin{itemize}
+    \item \textbf{Frontend Application}: A React-based web interface providing user-friendly certificate management
+    \item \textbf{Backend API}: A FastAPI-based service handling SSL certificate operations and Let's Encrypt integration
+\end{itemize}
+
+\subsection{System Architecture Overview}
+
+The proposed system follows a modern microservices architecture with clear separation of concerns (detailed component diagram is provided in Chapter 3):
+
+\subsubsection{Frontend Layer}
+\begin{itemize}
+    \item \textbf{User Interface}: Modern React-based SPA with responsive design
+    \item \textbf{State Management}: Local component state with React hooks
+    \item \textbf{API Communication}: Axios-based HTTP client with error handling
+    \item \textbf{Authentication}: Token-based authentication (future enhancement)
+\end{itemize}
+
+\subsubsection{Backend Layer}
+\begin{itemize}
+    \item \textbf{API Gateway}: FastAPI framework with automatic documentation
+    \item \textbf{Business Logic}: Certificate generation and management services
+    \item \textbf{External Integrations}: Let's Encrypt ACME and DNS provider APIs
+    \item \textbf{File Management}: Certificate storage and retrieval system
+\end{itemize}
+
+\subsubsection{Infrastructure Layer}
+\begin{itemize}
+    \item \textbf{Containerization}: Docker-based deployment with volume persistence
+    \item \textbf{DNS Integration}: GoDaddy API for automated DNS challenge validation
+    \item \textbf{Certificate Authority}: Let's Encrypt for free SSL certificates
+    \item \textbf{Storage}: Persistent volumes for certificate and configuration files
+\end{itemize}
+
+\subsubsection{Frontend Layer}
+\begin{itemize}
+    \item \textbf{User Interface}: Modern React-based SPA with responsive design
+    \item \textbf{State Management}: Local component state with React hooks
+    \item \textbf{API Communication}: Axios-based HTTP client with error handling
+    \item \textbf{Authentication}: Token-based authentication (future enhancement)
+\end{itemize}
+
+\subsubsection{Backend Layer}
+\begin{itemize}
+    \item \textbf{API Gateway}: FastAPI framework with automatic documentation
+    \item \textbf{Business Logic}: Certificate generation and management services
+    \item \textbf{External Integrations}: Let's Encrypt ACME and DNS provider APIs
+    \item \textbf{File Management}: Certificate storage and retrieval system
+\end{itemize}
+
+\subsubsection{Infrastructure Layer}
+\begin{itemize}
+    \item \textbf{Containerization}: Docker-based deployment with volume persistence
+    \item \textbf{DNS Integration}: GoDaddy API for automated DNS challenge validation
+    \item \textbf{Certificate Authority}: Let's Encrypt for free SSL certificates
+    \item \textbf{Storage}: Persistent volumes for certificate and configuration files
+\end{itemize}
+
+\section{Objectives of System}
+
+\subsection{Primary Objectives}
+
+\begin{enumerate}
+    \item \textbf{Automate SSL Certificate Generation}
+    \begin{itemize}
+        \item Eliminate manual CSR creation and domain validation processes
+        \item Provide one-click certificate generation for single and wildcard domains
+        \item Support DNS-01 challenge validation for enhanced security
+    \end{itemize}
+    
+    \item \textbf{Simplify Certificate Management}
+    \begin{itemize}
+        \item Centralized dashboard for all certificate operations
+        \item Real-time monitoring of certificate status and expiration dates
+        \item Easy certificate download and deployment assistance
+    \end{itemize}
+    
+    \item \textbf{Enhance Security and Compliance}
+    \begin{itemize}
+        \item Implement best practices for SSL certificate handling
+        \item Ensure ACME protocol compliance for Let's Encrypt integration
+        \item Provide secure credential management for DNS provider APIs
+    \end{itemize}
+    
+    \item \textbf{Improve Operational Efficiency}
+    \begin{itemize}
+        \item Reduce manual intervention in certificate lifecycle management
+        \item Provide comprehensive documentation for server configuration
+        \item Enable bulk certificate operations for enterprise use
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Secondary Objectives}
+
+\begin{enumerate}
+    \item \textbf{User Experience Enhancement}
+    \begin{itemize}
+        \item Intuitive web interface with modern design principles
+        \item Responsive design for multiple device types
+        \item Dark mode support for improved usability
+    \end{itemize}
+    
+    \item \textbf{System Reliability}
+    \begin{itemize}
+        \item Robust error handling and recovery mechanisms
+        \item Comprehensive logging for troubleshooting
+        \item Scalable architecture for growing certificate needs
+    \end{itemize}
+    
+    \item \textbf{Integration Capabilities}
+    \begin{itemize}
+        \item RESTful API design for third-party integrations
+        \item Support for multiple DNS providers (extensible architecture)
+        \item CI/CD pipeline compatibility for DevOps workflows
+    \end{itemize}
+\end{enumerate}
+
+\section{User Requirements}
+
+\subsection{Functional Requirements}
+
+\subsubsection{Certificate Generation Requirements}
+\begin{enumerate}
+    \item The system shall generate SSL certificates using Let's Encrypt ACME protocol
+    \item The system shall support both single domain and wildcard certificate generation
+    \item The system shall validate domain ownership using DNS-01 challenge method
+    \item The system shall automatically handle DNS TXT record creation and cleanup
+    \item The system shall provide real-time feedback during certificate generation process
+\end{enumerate}
+
+\subsubsection{Certificate Management Requirements}
+\begin{enumerate}
+    \item The system shall display all certificates with their status and expiration dates
+    \item The system shall provide certificate download capabilities in multiple formats
+    \item The system shall show certificate validity and remaining days until expiration
+    \item The system shall support certificate bundle downloads (ZIP format)
+    \item The system shall provide certificate information parsing and display
+\end{enumerate}
+
+\subsubsection{DNS Provider Integration Requirements}
+\begin{enumerate}
+    \item The system shall integrate with GoDaddy DNS API for automated DNS operations
+    \item The system shall support configurable TTL values for DNS records
+    \item The system shall handle DNS propagation delays automatically
+    \item The system shall provide extensible architecture for additional DNS providers
+    \item The system shall validate DNS provider credentials before certificate generation
+\end{enumerate}
+
+\subsubsection{User Interface Requirements}
+\begin{enumerate}
+    \item The system shall provide a responsive web interface accessible on multiple devices
+    \item The system shall support dark and light theme modes
+    \item The system shall display comprehensive documentation for server configuration
+    \item The system shall provide form validation with user-friendly error messages
+    \item The system shall show loading states and progress indicators for long operations
+\end{enumerate}
+
+\subsection{Non-Functional Requirements}
+
+\subsubsection{Performance Requirements}
+\begin{enumerate}
+    \item Certificate generation process shall complete within 5 minutes under normal conditions
+    \item The web interface shall load within 3 seconds on standard broadband connections
+    \item The system shall support concurrent certificate generation requests
+    \item API responses shall have a maximum timeout of 60 seconds for certificate operations
+\end{enumerate}
+
+\subsubsection{Security Requirements}
+\begin{enumerate}
+    \item DNS provider credentials shall not be stored persistently in the system
+    \item All API communications shall use HTTPS in production environments
+    \item Certificate files shall be stored with appropriate file permissions
+    \item The system shall validate all input parameters to prevent injection attacks
+\end{enumerate}
+
+\subsubsection{Reliability Requirements}
+\begin{enumerate}
+    \item The system shall have 99\% uptime availability during business hours
+    \item Certificate files shall be persistently stored with backup capabilities
+    \item The system shall gracefully handle DNS provider API rate limits
+    \item Error recovery mechanisms shall be implemented for failed certificate generation
+\end{enumerate}
+
+\subsubsection{Usability Requirements}
+\begin{enumerate}
+    \item The system shall be operable by users with basic web application knowledge
+    \item Documentation shall be comprehensive and easily accessible within the application
+    \item Error messages shall be clear and provide actionable guidance
+    \item The interface shall follow modern web design principles and accessibility standards
+\end{enumerate}
+
+\subsubsection{Scalability Requirements}
+\begin{enumerate}
+    \item The system shall support management of up to 100 certificates per installation
+    \item The architecture shall be designed for horizontal scaling through containerization
+    \item The system shall support multiple DNS provider integrations simultaneously
+    \item Database integration shall be considered for future certificate metadata management
+\end{enumerate}
+
+
+

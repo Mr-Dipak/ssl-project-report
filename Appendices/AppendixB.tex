@@ -1,0 +1,616 @@
+% Appendix B
+
+\chapter{Sample Program Code} % Main appendix title
+
+\label{AppendixB} % For referencing this appendix elsewhere, use \ref{AppendixB}
+
+% Header formatting is now handled in main.tex
+
+This appendix contains key program code samples that demonstrate the core functionality and implementation details of the SSL Automation Tool.
+
+\section{Frontend Code Samples}
+
+\subsection{SSL Dashboard Component}
+
+The main dashboard component that manages certificate display and operations:
+
+\begin{verbatim}
+// SSLDashboard.tsx - Main certificate management interface
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { SSLApiService } from '@/lib/api';
+import { Certificate } from '@/types/ssl';
+
+export function SSLDashboard() {
+  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadCertificates();
+  }, []);
+
+  const loadCertificates = async () => {
+    try {
+      setLoading(true);
+      const response = await SSLApiService.listCertificates();
+      setCertificates(response.certificates);
+    } catch (error) {
+      console.error('Failed to load certificates:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const downloadCertificate = async (domain: string, type: string) => {
+    try {
+      const blob = await SSLApiService.downloadCertificateFile(domain, type);
+      SSLApiService.triggerDownload(blob, `${domain}-${type}.pem`);
+    } catch (error) {
+      console.error('Download failed:', error);
+    }
+  };
+
+  const getStatusColor = (cert: Certificate) => {
+    if (!cert.valid) return 'red';
+    const daysUntilExpiry = Math.ceil(
+      (new Date(cert.expires_on).getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+    );
+    if (daysUntilExpiry < 7) return 'red';
+    if (daysUntilExpiry < 30) return 'yellow';
+    return 'green';
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Statistics Cards */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Total Certificates</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{certificates.length}</div>
+          </CardContent>
+        </Card>
+        {/* Additional statistics cards... */}
+      </div>
+      
+      {/* Certificate List */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Certificate Management</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {certificates.map((cert) => (
+            <div key={cert.domain} className="border-b py-4">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="font-medium">{cert.domain}</h3>
+                  <p className="text-sm text-gray-500">
+                    Expires: {new Date(cert.expires_on).toLocaleDateString()}
+                  </p>
+                </div>
+                <div className="flex space-x-2">
+                  <Button
+                    onClick={() => downloadCertificate(cert.domain, 'fullchain')}
+                    size="sm"
+                  >
+                    Download Fullchain
+                  </Button>
+                  <Button
+                    onClick={() => downloadCertificate(cert.domain, 'privkey')}
+                    size="sm"
+                  >
+                    Download Private Key
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+\end{verbatim}
+
+\subsection{Certificate Generation Form}
+
+Form component for creating new SSL certificates:
+
+\begin{verbatim}
+// CertificateGenerationDialog.tsx - Certificate creation interface
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { SSLApiService } from '@/lib/api';
+
+const formSchema = z.object({
+  domain: z.string().min(1, 'Domain is required'),
+  email: z.string().email('Valid email is required'),
+  dns_provider: z.literal('godaddy'),
+  api_key: z.string().min(1, 'API key is required'),
+  api_secret: z.string().min(1, 'API secret is required'),
+  base_domain: z.string().min(1, 'Base domain is required'),
+  ttl: z.number().min(300).max(86400).optional(),
+  propagation_delay: z.number().min(30).max(600).optional(),
+});
+
+type FormData = z.infer<typeof formSchema>;
+
+export function CertificateGenerationDialog({ onSuccess, onClose }) {
+  const [isGenerating, setIsGenerating] = useState(false);
+  
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      dns_provider: 'godaddy',
+      ttl: 600,
+      propagation_delay: 60,
+    },
+  });
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      setIsGenerating(true);
+      const response = await SSLApiService.generateCertificate(data);
+      
+      if (response.success) {
+        toast.success('Certificate generated successfully!');
+        onSuccess();
+        onClose();
+      } else {
+        toast.error(`Generation failed: ${response.error}`);
+      }
+    } catch (error) {
+      toast.error('Failed to generate certificate');
+      console.error(error);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <div>
+        <Label htmlFor="domain">Domain</Label>
+        <Input
+          id="domain"
+          placeholder="example.com or *.example.com"
+          {...form.register('domain')}
+        />
+        {form.formState.errors.domain && (
+          <p className="text-red-500 text-sm">
+            {form.formState.errors.domain.message}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="admin@example.com"
+          {...form.register('email')}
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="api_key">GoDaddy API Key</Label>
+        <Input
+          id="api_key"
+          type="password"
+          {...form.register('api_key')}
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="api_secret">GoDaddy API Secret</Label>
+        <Input
+          id="api_secret"
+          type="password"
+          {...form.register('api_secret')}
+        />
+      </div>
+
+      <Button 
+        type="submit" 
+        disabled={isGenerating}
+        className="w-full"
+      >
+        {isGenerating ? 'Generating...' : 'Generate Certificate'}
+      </Button>
+    </form>
+  );
+}
+\end{verbatim}
+
+\section{Backend Code Samples}
+
+\subsection{FastAPI Main Application}
+
+The core FastAPI application setup with CORS and routing:
+
+\begin{verbatim}
+# app/main.py - FastAPI application entry point
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.routes import certs
+
+app = FastAPI(
+    title="SSL Automation API",
+    description="Automated SSL certificate generation using Let's Encrypt",
+    version="1.0.0"
+)
+
+# CORS configuration for frontend integration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include certificate management routes
+app.include_router(certs.router, prefix="/api/v1")
+
+@app.get("/")
+async def root():
+    return {"message": "SSL Automation API is running"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "ssl-automation-api"}
+\end{verbatim}
+
+\subsection{Certificate Service Implementation}
+
+Core business logic for certificate operations:
+
+\begin{verbatim}
+# app/services/cert_service.py - Certificate file operations
+import os
+import zipfile
+from pathlib import Path
+from typing import Optional, Dict, List
+from app.utils.cert_info import get_cert_info
+
+class CertService:
+    @staticmethod
+    def get_cert_paths(domain: str) -> Optional[Dict[str, str]]:
+        """Get paths to certificate files for a domain."""
+        cert_dir = Path(f"/etc/letsencrypt/live/{domain}")
+        
+        if not cert_dir.exists():
+            return None
+            
+        fullchain_path = cert_dir / "fullchain.pem"
+        privkey_path = cert_dir / "privkey.pem"
+        
+        if fullchain_path.exists() and privkey_path.exists():
+            return {
+                "fullchain": str(fullchain_path),
+                "privkey": str(privkey_path)
+            }
+        
+        return None
+    
+    @staticmethod
+    def create_cert_zip(domain: str) -> Optional[str]:
+        """Create a ZIP archive containing all certificate files."""
+        cert_paths = CertService.get_cert_paths(domain)
+        if not cert_paths:
+            return None
+            
+        zip_path = f"/tmp/{domain}-certificates.zip"
+        
+        with zipfile.ZipFile(zip_path, 'w') as zipf:
+            for file_type, file_path in cert_paths.items():
+                if os.path.exists(file_path):
+                    zipf.write(file_path, f"{file_type}.pem")
+        
+        return zip_path if os.path.exists(zip_path) else None
+    
+    @staticmethod
+    def list_all_certificates() -> List[Dict]:
+        """List all managed certificates with their information."""
+        certificates = []
+        le_dir = Path("/etc/letsencrypt/live")
+        
+        if not le_dir.exists():
+            return certificates
+            
+        for domain_dir in le_dir.iterdir():
+            if domain_dir.is_dir():
+                cert_info = get_cert_info(domain_dir.name)
+                if cert_info:
+                    certificates.append(cert_info)
+                    
+        return certificates
+\end{verbatim}
+
+\subsection{Certbot Runner Service}
+
+Service for executing Certbot commands with DNS validation:
+
+\begin{verbatim}
+# app/services/certbot_runner.py - Certbot execution wrapper
+import subprocess
+import os
+import logging
+from typing import Dict, Tuple
+
+logger = logging.getLogger(__name__)
+
+class CertbotRunner:
+    @staticmethod
+    def generate_certificate(
+        domain: str,
+        email: str,
+        dns_provider: str,
+        api_key: str,
+        api_secret: str,
+        base_domain: str,
+        ttl: int = 600,
+        propagation_delay: int = 60
+    ) -> Tuple[bool, str]:
+        """Execute Certbot to generate SSL certificate."""
+        
+        # Set environment variables for DNS hook
+        env = os.environ.copy()
+        env.update({
+            'GODADDY_API_KEY': api_key,
+            'GODADDY_API_SECRET': api_secret,
+            'BASE_DOMAIN': base_domain,
+            'DNS_TTL': str(ttl),
+            'PROPAGATION_DELAY': str(propagation_delay)
+        })
+        
+        # Construct Certbot command
+        cmd = [
+            'certbot', 'certonly',
+            '--manual',
+            '--preferred-challenges=dns',
+            '--manual-auth-hook', '/app/scripts/godaddy_auth_hook.py',
+            '--manual-cleanup-hook', '/app/scripts/godaddy_cleanup_hook.py',
+            '--domain', domain,
+            '--email', email,
+            '--agree-tos',
+            '--non-interactive',
+            '--manual-public-ip-logging-ok'
+        ]
+        
+        try:
+            logger.info(f"Starting certificate generation for {domain}")
+            
+            result = subprocess.run(
+                cmd,
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=300  # 5 minute timeout
+            )
+            
+            if result.returncode == 0:
+                logger.info(f"Certificate generated successfully for {domain}")
+                return True, result.stdout
+            else:
+                logger.error(f"Certbot failed for {domain}: {result.stderr}")
+                return False, result.stderr
+                
+        except subprocess.TimeoutExpired:
+            logger.error(f"Certbot timeout for {domain}")
+            return False, "Certificate generation timed out"
+        except Exception as e:
+            logger.error(f"Certbot execution failed for {domain}: {str(e)}")
+            return False, f"Execution failed: {str(e)}"
+\end{verbatim}
+
+\section{DNS Integration Code}
+
+\subsection{GoDaddy DNS Hook Script}
+
+Python script for automated DNS challenge handling:
+
+\begin{verbatim}
+#!/usr/bin/env python3
+# app/scripts/godaddy_auth_hook.py - GoDaddy DNS authentication hook
+
+import os
+import sys
+import requests
+import time
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def create_txt_record():
+    """Create TXT record for DNS challenge validation."""
+    
+    # Get environment variables set by Certbot
+    domain = os.environ.get('CERTBOT_DOMAIN')
+    validation = os.environ.get('CERTBOT_VALIDATION')
+    
+    # Get GoDaddy API credentials
+    api_key = os.environ.get('GODADDY_API_KEY')
+    api_secret = os.environ.get('GODADDY_API_SECRET')
+    base_domain = os.environ.get('BASE_DOMAIN')
+    ttl = int(os.environ.get('DNS_TTL', 600))
+    delay = int(os.environ.get('PROPAGATION_DELAY', 60))
+    
+    if not all([domain, validation, api_key, api_secret, base_domain]):
+        logger.error("Missing required environment variables")
+        sys.exit(1)
+    
+    # Construct record name
+    record_name = f"_acme-challenge.{domain}"
+    if domain.startswith('*.'):
+        record_name = f"_acme-challenge.{domain[2:]}"
+    
+    # Remove base domain from record name for GoDaddy API
+    if record_name.endswith(f".{base_domain}"):
+        record_name = record_name[:-len(f".{base_domain}")]
+    
+    # GoDaddy API headers
+    headers = {
+        'Authorization': f'sso-key {api_key}:{api_secret}',
+        'Content-Type': 'application/json'
+    }
+    
+    # Record data
+    record_data = [{
+        'data': validation,
+        'ttl': ttl
+    }]
+    
+    # API endpoint
+    url = f"https://api.godaddy.com/v1/domains/{base_domain}/records/TXT/{record_name}"
+    
+    try:
+        logger.info(f"Creating TXT record: {record_name} = {validation}")
+        
+        response = requests.put(url, json=record_data, headers=headers)
+        response.raise_for_status()
+        
+        logger.info(f"TXT record created successfully")
+        logger.info(f"Waiting {delay} seconds for DNS propagation...")
+        
+        time.sleep(delay)
+        
+        logger.info("DNS propagation wait complete")
+        
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Failed to create TXT record: {e}")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    create_txt_record()
+\end{verbatim}
+
+\section{API Models and Types}
+
+\subsection{Pydantic Models}
+
+Data validation models for API requests and responses:
+
+\begin{verbatim}
+# app/models/models.py - Pydantic data models
+from pydantic import BaseModel, EmailStr
+from typing import Optional, List
+from datetime import datetime
+
+class CertRequest(BaseModel):
+    """Certificate generation request model."""
+    domain: str
+    email: EmailStr
+    dns_provider: str = "godaddy"
+    api_key: str
+    api_secret: str
+    base_domain: str
+    ttl: Optional[int] = 600
+    propagation_delay: Optional[int] = 60
+
+class CertFetchRequest(BaseModel):
+    """Certificate retrieval request model."""
+    domain: str
+
+class Certificate(BaseModel):
+    """Certificate information model."""
+    domain: str
+    issued_on: str
+    expires_on: str
+    valid: bool
+    fullchain_path: Optional[str] = None
+    privkey_path: Optional[str] = None
+
+class CertificateListResponse(BaseModel):
+    """Certificate list response model."""
+    certificates: List[Certificate]
+    total: int
+
+class CertificateGenerationResponse(BaseModel):
+    """Certificate generation response model."""
+    success: bool
+    message: str
+    domain: Optional[str] = None
+    error: Optional[str] = None
+    output: Optional[str] = None
+\end{verbatim}
+
+\section{Configuration Files}
+
+\subsection{Docker Configuration}
+
+Docker Compose setup for containerized deployment:
+
+\begin{verbatim}
+# docker-compose.yml - Container orchestration
+version: '3.8'
+
+services:
+  ssl-automation-backend:
+    build: .
+    ports:
+      - "80:8000"
+    volumes:
+      - .:/app
+      - cert-data:/etc/letsencrypt
+    environment:
+      - PYTHONPATH=/app
+    working_dir: /app
+    command: uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+volumes:
+  cert-data:
+    driver: local
+\end{verbatim}
+
+\subsection{Python Project Configuration}
+
+Modern Python project setup with UV package manager:
+
+\begin{verbatim}
+# pyproject.toml - Python project configuration
+[project]
+name = "ssl-automation-backend"
+version = "0.1.0"
+description = "Automated SSL certificate generation using Let's Encrypt"
+readme = "README.md"
+requires-python = ">=3.13"
+
+dependencies = [
+    "fastapi>=0.115.12",
+    "uvicorn>=0.34.3",
+    "pydantic>=2.5.0",
+    "pydantic[email]>=2.5.0",
+    "certbot>=4.1.1",
+    "cryptography>=45.0.4",
+    "requests>=2.31.0",
+    "python-multipart>=0.0.6"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.24.0"
+]
+\end{verbatim}
+
